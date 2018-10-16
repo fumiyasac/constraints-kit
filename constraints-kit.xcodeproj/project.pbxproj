@@ -10,6 +10,16 @@
 		A988666B2176046A0002B490 /* constraints_kit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9886661217604690002B490 /* constraints_kit.framework */; };
 		A98866702176046A0002B490 /* constraints_kitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A988666F2176046A0002B490 /* constraints_kitTests.swift */; };
 		A98866722176046A0002B490 /* constraints_kit.h in Headers */ = {isa = PBXBuildFile; fileRef = A9886664217604690002B490 /* constraints_kit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A98866822176048C0002B490 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98866812176048C0002B490 /* AppDelegate.swift */; };
+		A98866842176048C0002B490 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98866832176048C0002B490 /* ViewController.swift */; };
+		A98866872176048C0002B490 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A98866852176048C0002B490 /* Main.storyboard */; };
+		A98866892176048D0002B490 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A98866882176048D0002B490 /* Assets.xcassets */; };
+		A988668C2176048D0002B490 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A988668A2176048D0002B490 /* LaunchScreen.storyboard */; };
+		A9886692217604AE0002B490 /* UIView+ConstraintsKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9886691217604AE0002B490 /* UIView+ConstraintsKit.swift */; };
+		A9886694217604EA0002B490 /* UIChainableConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9886693217604EA0002B490 /* UIChainableConstraint.swift */; };
+		A9886696217606E00002B490 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = A9886695217606E00002B490 /* .gitignore */; };
+		A9886697217606E00002B490 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = A9886695217606E00002B490 /* .gitignore */; };
+		A9886698217606E00002B490 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = A9886695217606E00002B490 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +39,16 @@
 		A988666A2176046A0002B490 /* constraints-kitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "constraints-kitTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A988666F2176046A0002B490 /* constraints_kitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constraints_kitTests.swift; sourceTree = "<group>"; };
 		A98866712176046A0002B490 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A988667F2176048C0002B490 /* demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A98866812176048C0002B490 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A98866832176048C0002B490 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A98866862176048C0002B490 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A98866882176048D0002B490 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A988668B2176048D0002B490 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A988668D2176048D0002B490 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A9886691217604AE0002B490 /* UIView+ConstraintsKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+ConstraintsKit.swift"; sourceTree = "<group>"; };
+		A9886693217604EA0002B490 /* UIChainableConstraint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIChainableConstraint.swift; sourceTree = "<group>"; };
+		A9886695217606E00002B490 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,14 +67,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A988667C2176048C0002B490 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		A9886657217604690002B490 = {
 			isa = PBXGroup;
 			children = (
+				A9886695217606E00002B490 /* .gitignore */,
 				A9886663217604690002B490 /* constraints-kit */,
 				A988666E2176046A0002B490 /* constraints-kitTests */,
+				A98866802176048C0002B490 /* demo */,
 				A9886662217604690002B490 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -64,6 +93,7 @@
 			children = (
 				A9886661217604690002B490 /* constraints_kit.framework */,
 				A988666A2176046A0002B490 /* constraints-kitTests.xctest */,
+				A988667F2176048C0002B490 /* demo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -73,6 +103,8 @@
 			children = (
 				A9886664217604690002B490 /* constraints_kit.h */,
 				A9886665217604690002B490 /* Info.plist */,
+				A9886691217604AE0002B490 /* UIView+ConstraintsKit.swift */,
+				A9886693217604EA0002B490 /* UIChainableConstraint.swift */,
 			);
 			path = "constraints-kit";
 			sourceTree = "<group>";
@@ -84,6 +116,19 @@
 				A98866712176046A0002B490 /* Info.plist */,
 			);
 			path = "constraints-kitTests";
+			sourceTree = "<group>";
+		};
+		A98866802176048C0002B490 /* demo */ = {
+			isa = PBXGroup;
+			children = (
+				A98866812176048C0002B490 /* AppDelegate.swift */,
+				A98866832176048C0002B490 /* ViewController.swift */,
+				A98866852176048C0002B490 /* Main.storyboard */,
+				A98866882176048D0002B490 /* Assets.xcassets */,
+				A988668A2176048D0002B490 /* LaunchScreen.storyboard */,
+				A988668D2176048D0002B490 /* Info.plist */,
+			);
+			path = demo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,6 +181,23 @@
 			productReference = A988666A2176046A0002B490 /* constraints-kitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		A988667E2176048C0002B490 /* demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A988668E2176048D0002B490 /* Build configuration list for PBXNativeTarget "demo" */;
+			buildPhases = (
+				A988667B2176048C0002B490 /* Sources */,
+				A988667C2176048C0002B490 /* Frameworks */,
+				A988667D2176048C0002B490 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = demo;
+			productName = demo;
+			productReference = A988667F2176048C0002B490 /* demo.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -148,8 +210,12 @@
 				TargetAttributes = {
 					A9886660217604690002B490 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1000;
 					};
 					A98866692176046A0002B490 = {
+						CreatedOnToolsVersion = 10.0;
+					};
+					A988667E2176048C0002B490 = {
 						CreatedOnToolsVersion = 10.0;
 					};
 				};
@@ -160,6 +226,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = A9886657217604690002B490;
 			productRefGroup = A9886662217604690002B490 /* Products */;
@@ -168,6 +235,7 @@
 			targets = (
 				A9886660217604690002B490 /* constraints-kit */,
 				A98866692176046A0002B490 /* constraints-kitTests */,
+				A988667E2176048C0002B490 /* demo */,
 			);
 		};
 /* End PBXProject section */
@@ -177,6 +245,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9886696217606E00002B490 /* .gitignore in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,6 +253,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9886697217606E00002B490 /* .gitignore in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A988667D2176048C0002B490 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9886698217606E00002B490 /* .gitignore in Resources */,
+				A988668C2176048D0002B490 /* LaunchScreen.storyboard in Resources */,
+				A98866892176048D0002B490 /* Assets.xcassets in Resources */,
+				A98866872176048C0002B490 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,6 +275,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9886694217604EA0002B490 /* UIChainableConstraint.swift in Sources */,
+				A9886692217604AE0002B490 /* UIView+ConstraintsKit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,6 +285,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				A98866702176046A0002B490 /* constraints_kitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A988667B2176048C0002B490 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A98866842176048C0002B490 /* ViewController.swift in Sources */,
+				A98866822176048C0002B490 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,6 +306,25 @@
 			targetProxy = A988666C2176046A0002B490 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A98866852176048C0002B490 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A98866862176048C0002B490 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A988668A2176048D0002B490 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A988668B2176048D0002B490 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		A98866732176046A0002B490 /* Debug */ = {
@@ -268,7 +379,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -326,7 +437,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -341,6 +452,7 @@
 		A98866762176046A0002B490 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -349,6 +461,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "constraints-kit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -357,6 +470,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "eleev.astemir.constraints-kit";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -365,6 +479,7 @@
 		A98866772176046A0002B490 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -373,6 +488,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "constraints-kit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -389,6 +505,7 @@
 		A98866792176046A0002B490 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "constraints-kitTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -406,6 +523,7 @@
 		A988667A2176046A0002B490 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "constraints-kitTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -414,6 +532,40 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "eleev.astemir.constraints-kitTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A988668F2176048D0002B490 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = demo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = eleev.astemir.demo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A98866902176048D0002B490 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = demo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = eleev.astemir.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -446,6 +598,15 @@
 			buildConfigurations = (
 				A98866792176046A0002B490 /* Debug */,
 				A988667A2176046A0002B490 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A988668E2176048D0002B490 /* Build configuration list for PBXNativeTarget "demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A988668F2176048D0002B490 /* Debug */,
+				A98866902176048D0002B490 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
