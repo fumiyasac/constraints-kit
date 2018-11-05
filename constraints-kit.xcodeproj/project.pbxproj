@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A91FE50021905D370036A994 /* UIView+RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91FE4FF21905D370036A994 /* UIView+RoundedCorners.swift */; };
+		A91FE502219060E70036A994 /* UIChainableConstraint+SizeProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91FE501219060E70036A994 /* UIChainableConstraint+SizeProperties.swift */; };
+		A91FE504219061460036A994 /* UIChainableConstraint+Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91FE503219061460036A994 /* UIChainableConstraint+Attribute.swift */; };
+		A91FE5062190615C0036A994 /* UIChainableConstraint+Axis.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91FE5052190615C0036A994 /* UIChainableConstraint+Axis.swift */; };
+		A91FE508219062ED0036A994 /* UIChainableConstraint+Relation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91FE507219062ED0036A994 /* UIChainableConstraint+Relation.swift */; };
 		A988666B2176046A0002B490 /* constraints_kit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9886661217604690002B490 /* constraints_kit.framework */; };
 		A98866702176046A0002B490 /* constraints_kitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A988666F2176046A0002B490 /* constraints_kitTests.swift */; };
 		A98866722176046A0002B490 /* constraints_kit.h in Headers */ = {isa = PBXBuildFile; fileRef = A9886664217604690002B490 /* constraints_kit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -33,6 +38,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A91FE4FF21905D370036A994 /* UIView+RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+RoundedCorners.swift"; sourceTree = "<group>"; };
+		A91FE501219060E70036A994 /* UIChainableConstraint+SizeProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIChainableConstraint+SizeProperties.swift"; sourceTree = "<group>"; };
+		A91FE503219061460036A994 /* UIChainableConstraint+Attribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIChainableConstraint+Attribute.swift"; sourceTree = "<group>"; };
+		A91FE5052190615C0036A994 /* UIChainableConstraint+Axis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIChainableConstraint+Axis.swift"; sourceTree = "<group>"; };
+		A91FE507219062ED0036A994 /* UIChainableConstraint+Relation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIChainableConstraint+Relation.swift"; sourceTree = "<group>"; };
 		A9886661217604690002B490 /* constraints_kit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = constraints_kit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9886664217604690002B490 /* constraints_kit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = constraints_kit.h; sourceTree = "<group>"; };
 		A9886665217604690002B490 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -104,7 +114,12 @@
 				A9886664217604690002B490 /* constraints_kit.h */,
 				A9886665217604690002B490 /* Info.plist */,
 				A9886691217604AE0002B490 /* UIView+ConstraintsKit.swift */,
+				A91FE4FF21905D370036A994 /* UIView+RoundedCorners.swift */,
 				A9886693217604EA0002B490 /* UIChainableConstraint.swift */,
+				A91FE501219060E70036A994 /* UIChainableConstraint+SizeProperties.swift */,
+				A91FE503219061460036A994 /* UIChainableConstraint+Attribute.swift */,
+				A91FE5052190615C0036A994 /* UIChainableConstraint+Axis.swift */,
+				A91FE507219062ED0036A994 /* UIChainableConstraint+Relation.swift */,
 			);
 			path = "constraints-kit";
 			sourceTree = "<group>";
@@ -275,7 +290,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A91FE50021905D370036A994 /* UIView+RoundedCorners.swift in Sources */,
 				A9886694217604EA0002B490 /* UIChainableConstraint.swift in Sources */,
+				A91FE502219060E70036A994 /* UIChainableConstraint+SizeProperties.swift in Sources */,
+				A91FE504219061460036A994 /* UIChainableConstraint+Attribute.swift in Sources */,
+				A91FE508219062ED0036A994 /* UIChainableConstraint+Relation.swift in Sources */,
+				A91FE5062190615C0036A994 /* UIChainableConstraint+Axis.swift in Sources */,
 				A9886692217604AE0002B490 /* UIView+ConstraintsKit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

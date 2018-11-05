@@ -13,7 +13,7 @@ public class UIChainableConstraint {
     // MARK: - Enums
     
     public enum Attribute {
-        case top, bottom, left, right, aspect, width, height, centerX, centerY
+        case top, bottom, left, right, aspect, width, height, centerX, centerY, lastBaseline, firstBaseline
     }
     
     public enum AxisX {
@@ -28,9 +28,15 @@ public class UIChainableConstraint {
         case horizontal, vertical
     }
     
+    public enum Relation: Int {
+        case lessThanOrEqual = -1
+        case equal = 0
+        case greaterThanOrEqual = 1
+    }
+    
     // MARK: - Properties
     
-    private let view: UIView
+    internal var view: UIView
     
     // MARK: - Initializers
     
@@ -41,30 +47,78 @@ public class UIChainableConstraint {
     
     // MARK: - Methods
     
-    @discardableResult public func top(with view: UIView, anchor: UIChainableConstraint.AxisY, offset: CGFloat = 0) -> UIChainableConstraint {
-        self.view.topAnchor.constraint(equalTo: anchored(to: view, using: anchor), constant: offset).isActive = true
+    /// Identifies the last constraint with the given identifier
+    @discardableResult public func identify(with name: String) -> UIChainableConstraint {
+        if let lastConstaint = view.superview?.constraints.last {
+            lastConstaint.identifier = name
+        }
+        return self
+    }
+
+    @discardableResult public func top(with view: UIView, anchor: AxisY, relatedBy relation: Relation = .equal, offset: CGFloat = 0) -> UIChainableConstraint {
+        let computedAnchor = anchored(to: view, using: anchor)
+        let topAnchor = self.view.topAnchor
+        
+        switch relation {
+        case .equal:
+            topAnchor.constraint(equalTo: computedAnchor, constant: offset).isActive = true
+        case .greaterThanOrEqual:
+            topAnchor.constraint(greaterThanOrEqualTo: computedAnchor, constant: offset).isActive = true
+        case .lessThanOrEqual:
+            topAnchor.constraint(lessThanOrEqualTo: computedAnchor, constant: offset).isActive = true
+        }
         return self
     }
     
-    @discardableResult public func bottom(with view: UIView, anchor: UIChainableConstraint.AxisY, offset: CGFloat = 0 ) -> UIChainableConstraint {
-        self.view.bottomAnchor.constraint(equalTo: anchored(to: view, using: anchor), constant: offset).isActive = true
+    @discardableResult public func bottom(with view: UIView, anchor: AxisY, relatedBy relation: Relation = .equal, offset: CGFloat = 0) -> UIChainableConstraint {
+        let computedAnchor = anchored(to: view, using: anchor)
+        let bottomAnchor = self.view.bottomAnchor
+        
+        switch relation {
+        case .equal:
+            bottomAnchor.constraint(equalTo: computedAnchor, constant: offset).isActive = true
+        case .lessThanOrEqual:
+            bottomAnchor.constraint(lessThanOrEqualTo: computedAnchor, constant: offset).isActive = true
+        case .greaterThanOrEqual:
+            bottomAnchor.constraint(greaterThanOrEqualTo: computedAnchor, constant: offset).isActive = true
+        }
         return self
     }
     
-    @discardableResult public func left(with view: UIView, anchor: UIChainableConstraint.AxisX, offset: CGFloat = 0 ) -> UIChainableConstraint {
-        self.view.leftAnchor.constraint(equalTo: anchored(to: view, using: anchor), constant: offset).isActive = true
+    @discardableResult public func left(with view: UIView, anchor: AxisX, relatedBy realtion: Relation = .equal, offset: CGFloat = 0) -> UIChainableConstraint {
+        let computedAnchor = anchored(to: view, using: anchor)
+        let leftAnchor = self.view.leftAnchor
+        
+        switch realtion {
+        case .equal:
+            leftAnchor.constraint(equalTo: computedAnchor, constant: offset).isActive = true
+        case .greaterThanOrEqual:
+            leftAnchor.constraint(greaterThanOrEqualTo: computedAnchor, constant: offset).isActive = true
+        case .lessThanOrEqual:
+            leftAnchor.constraint(lessThanOrEqualTo: computedAnchor, constant: offset).isActive = true
+        }
         return self
     }
     
-    @discardableResult public func right(with view: UIView, anchor: UIChainableConstraint.AxisX, offset: CGFloat = 0 ) -> UIChainableConstraint {
-        self.view.rightAnchor.constraint(equalTo: anchored(to: view, using: anchor), constant: offset).isActive = true
+    @discardableResult public func right(with view: UIView, anchor: AxisX, relatedBy relation: Relation = .equal, offset: CGFloat = 0) -> UIChainableConstraint {
+        let computedAnchor = anchored(to: view, using: anchor)
+        let rightAnchor = self.view.rightAnchor
+        
+        switch relation {
+        case .equal:
+            rightAnchor.constraint(equalTo: computedAnchor, constant: offset).isActive = true
+        case .greaterThanOrEqual:
+            rightAnchor.constraint(greaterThanOrEqualTo: computedAnchor, constant: offset).isActive = true
+        case .lessThanOrEqual:
+            rightAnchor.constraint(lessThanOrEqualTo: computedAnchor, constant: offset).isActive = true
+        }
         return self
     }
-    
-    @discardableResult public func constrain(using attribute: UIChainableConstraint.Attribute, to viewAttribute: UIChainableConstraint.Attribute, of relatedView: UIView, offset: CGFloat = 0, multiplier : CGFloat = 1) -> UIChainableConstraint {
+   
+    @discardableResult public func constrain(using attribute: Attribute, to viewAttribute: Attribute, of relatedView: UIView, relatedBy: Relation = .equal, offset: CGFloat = 0, multiplier: CGFloat = 1) -> UIChainableConstraint {
         
         if let sup = view.superview {
-            let constraint = NSLayoutConstraint(item: view, attribute: attribute.convert(), relatedBy: .equal, toItem: relatedView, attribute: viewAttribute.convert(), multiplier: multiplier, constant: offset)
+            let constraint = NSLayoutConstraint(item: view, attribute: attribute.convert(), relatedBy: relatedBy.convert(), toItem: relatedView, attribute: viewAttribute.convert(), multiplier: multiplier, constant: offset)
             sup.addConstraint(constraint)
         }
         return self
@@ -83,7 +137,7 @@ public class UIChainableConstraint {
         return self
     }
     
-    @discardableResult public func center(in view: UIView, axis: UIChainableConstraint.Axis, multiplier: CGFloat = 1) -> UIChainableConstraint{
+    @discardableResult public func center(in view: UIView, axis: Axis, multiplier: CGFloat = 1) -> UIChainableConstraint {
         let anchor = axis.convert()
         constrain(using: anchor, to: anchor, of: view, offset: 0, multiplier: multiplier)
         return self
@@ -99,7 +153,7 @@ public class UIChainableConstraint {
         return self
     }
     
-    @discardableResult func set(value: CGFloat, to attribute: UIChainableConstraint.Attribute) -> UIChainableConstraint {
+    @discardableResult func set(value: CGFloat, to attribute: Attribute) -> UIChainableConstraint {
         guard let superview = view.superview else { return self }
         
         let constraint = attribute != .aspect ?
@@ -112,88 +166,18 @@ public class UIChainableConstraint {
     
     // MARK: - Private methods
     
-    private func anchored(to view: UIView, using anchor: UIChainableConstraint.AxisY) -> NSLayoutAnchor<NSLayoutYAxisAnchor> {
+    private func anchored(to view: UIView, using anchor: AxisY) -> NSLayoutAnchor<NSLayoutYAxisAnchor> {
         guard #available(iOS 11.0, *) else {
             return (anchor == .bottom) ? view.layoutMarginsGuide.bottomAnchor : view.layoutMarginsGuide.topAnchor
         }
         return (anchor == .bottom) ? view.safeAreaLayoutGuide.bottomAnchor : view.safeAreaLayoutGuide.topAnchor
     }
     
-    private func anchored(to view: UIView, using anchor: UIChainableConstraint.AxisX) -> NSLayoutAnchor<NSLayoutXAxisAnchor> {
+    private func anchored(to view: UIView, using anchor: AxisX) -> NSLayoutAnchor<NSLayoutXAxisAnchor> {
         guard #available(iOS 11.0, *) else {
             return (anchor == .left) ? view.layoutMarginsGuide.leftAnchor : view.layoutMarginsGuide.rightAnchor
         }
         return (anchor == .left) ? view.safeAreaLayoutGuide.leftAnchor : view.safeAreaLayoutGuide.rightAnchor
     }
     
-}
-
-public extension UIChainableConstraint {
-    
-    public var width: CGFloat {
-        set(value) {
-            set(value: value, to: .width)
-        }
-        get {
-            return view.bounds.width
-            
-        }
-    }
-    
-    public var height: CGFloat {
-        set(value) {
-            set(value: value, to: .height)
-        }
-        get {
-            return view.bounds.height
-        }
-    }
-    
-    public var aspect: CGFloat {
-        set(value) {
-            set(value: value, to: .aspect)
-        }
-        get {
-            return view.bounds.width / view.bounds.height
-        }
-    }
-    
-}
-
-private extension UIChainableConstraint.Attribute {
-    
-    func convert() -> NSLayoutConstraint.Attribute {
-        switch self {
-        case .top:
-            return .top
-        case .bottom:
-            return .bottom
-        case .left:
-            return .leading
-        case .right:
-            return .trailing
-        case .width:
-            return .width
-        case .height:
-            return .height
-        case .centerX:
-            return .centerX
-        case .centerY:
-            return .centerY
-        default:
-            return .notAnAttribute
-        }
-    }
-}
-
-private extension UIChainableConstraint.Axis {
-    
-    func convert() -> UIChainableConstraint.Attribute {
-        switch self {
-        case .horizontal:
-            return .centerX
-        case .vertical:
-            return .centerY
-        }
-    }
 }

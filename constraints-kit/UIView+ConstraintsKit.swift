@@ -9,6 +9,8 @@
 import UIKit
 
 public extension UIView {
+    
+    /// Enables `Chainable Constraints`. Use this property to get access to the `UIChainableConstraint` API.
     public var constraint: UIChainableConstraint {
         return UIChainableConstraint(with: self)
     }
