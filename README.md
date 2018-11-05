@@ -4,12 +4,12 @@
 [![Language](https://img.shields.io/badge/language-Swift-orange.svg)]()
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)]()
 
-**Last Update: 17/October/2018.**
+**Last Update: 05/November/2018.**
 
-![](cover-uickit.png)
+![](logo-constraints_kit.png)
 
 # ✍️ About 
-🏗 Declarative & Chainable `Auto Layout` constraints made super easy. You don't even need to remember any new types to work with - the only thing that you need to do is to call `constrait` property for any of your `UIView` related classes. Then choose one or several chainable methods in order to describe `Auto Layout` constraints programmtically.
+🏗 Declarative & Chainable `Auto Layout` constraints made super easy. You don't even need to remember any new types to work with - the only thing that you need to do is to call `constraint` property for any of your `UIView` related classes. Then choose one or several chainable methods in order to describe `Auto Layout` constraints programmtically.
 
 # 🏗 Installation
 
