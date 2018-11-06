@@ -12,6 +12,7 @@ import constraints_kit
 class ViewController: UIViewController {
 
     let uiview = UIView()
+    let imageView = UIImageView()
     let button = UIButton(type: UIButton.ButtonType.system)
     
     override func viewDidLoad() {
@@ -20,8 +21,7 @@ class ViewController: UIViewController {
         
         // Add all the UIView components
 
-        view.addSubview(uiview)
-        view.addSubview(button)
+        [uiview, button].forEach { [weak self] in self?.view.addSubview($0) }
         
         uiview.backgroundColor = .orange
         uiview.round(corners: .all, radius: 30)
@@ -33,7 +33,9 @@ class ViewController: UIViewController {
 //            .constrain(using: .bottom, to: .top, of: button, offset: -24)
         
         uiview.constraint
-            .top(with: view, anchor: .top, offset: 24)
+//            .top(with: view, anchor: .top, offset: 24)
+            .topToSystemSpacing(with: view, anchor: .top)
+//            .constrain(using: .top, to: .centerY, of: view)
 //            .identify(with: "UIView Top <-> Top constraint")
             .right(with: view, anchor: .right, offset: -24)
 //            .identify(with: "UIView Right <-> Right constraint")
@@ -42,7 +44,7 @@ class ViewController: UIViewController {
             .bottom(with: button, anchor: .top, offset: -24)
 //            .identify(with: "UIView Bottom <-> Top constraint")
         
-//        print("uiview: ", view.constraints)
+        print("uiview: ", view.constraints)
         
         button.round(corners: .all, radius: 10)
         
@@ -50,11 +52,12 @@ class ViewController: UIViewController {
         button.setTitle("Open", for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = UIColor(red: 0.0, green: 0.25, blue: 0.5, alpha: 1.0)
-        button.constraint.width = 100
-        button.constraint.height = 60
+        
         button.constraint
             .bottom(with: view, anchor: .bottom, offset: -24)
             .center(in: view, axis: .horizontal)
+            .set(width: 100)
+            .set(height: 60)
     }
 }
 
