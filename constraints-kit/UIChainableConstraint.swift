@@ -55,71 +55,109 @@ public class UIChainableConstraint {
         return self
     }
 
-    @discardableResult public func top(with view: UIView, anchor: AxisY, relatedBy relation: Relation = .equal, offset: CGFloat = 0) -> UIChainableConstraint {
+    @discardableResult public func top(with view: UIView,
+                                       anchor: AxisY,
+                                       relatedBy relation: Relation = .equal,
+                                       priority: UILayoutPriority = .required,
+                                       offset: CGFloat = 0) -> UIChainableConstraint {
         let computedAnchor = anchored(to: view, using: anchor)
         let topAnchor = self.view.topAnchor
+        let constraint: NSLayoutConstraint
         
         switch relation {
         case .equal:
-            topAnchor.constraint(equalTo: computedAnchor, constant: offset).isActive = true
+            constraint = topAnchor.constraint(equalTo: computedAnchor, constant: offset)
         case .greaterThanOrEqual:
-            topAnchor.constraint(greaterThanOrEqualTo: computedAnchor, constant: offset).isActive = true
+            constraint = topAnchor.constraint(greaterThanOrEqualTo: computedAnchor, constant: offset)
         case .lessThanOrEqual:
-            topAnchor.constraint(lessThanOrEqualTo: computedAnchor, constant: offset).isActive = true
+            constraint = topAnchor.constraint(lessThanOrEqualTo: computedAnchor, constant: offset)
         }
+        constraint.priority = UILayoutPriority(rawValue: priority.rawValue)
+        constraint.isActive = true
+        
         return self
     }
     
-    @discardableResult public func bottom(with view: UIView, anchor: AxisY, relatedBy relation: Relation = .equal, offset: CGFloat = 0) -> UIChainableConstraint {
+    @discardableResult public func bottom(with view: UIView,
+                                          anchor: AxisY,
+                                          relatedBy relation: Relation = .equal,
+                                          priority: UILayoutPriority = .required,
+                                          offset: CGFloat = 0) -> UIChainableConstraint {
         let computedAnchor = anchored(to: view, using: anchor)
         let bottomAnchor = self.view.bottomAnchor
-        
+        let constraint: NSLayoutConstraint
+
         switch relation {
         case .equal:
-            bottomAnchor.constraint(equalTo: computedAnchor, constant: offset).isActive = true
+            constraint = bottomAnchor.constraint(equalTo: computedAnchor, constant: offset)
         case .lessThanOrEqual:
-            bottomAnchor.constraint(lessThanOrEqualTo: computedAnchor, constant: offset).isActive = true
+            constraint = bottomAnchor.constraint(lessThanOrEqualTo: computedAnchor, constant: offset)
         case .greaterThanOrEqual:
-            bottomAnchor.constraint(greaterThanOrEqualTo: computedAnchor, constant: offset).isActive = true
+            constraint = bottomAnchor.constraint(greaterThanOrEqualTo: computedAnchor, constant: offset)
         }
+        constraint.priority = UILayoutPriority(rawValue: priority.rawValue)
+        constraint.isActive = true
+        
         return self
     }
     
-    @discardableResult public func left(with view: UIView, anchor: AxisX, relatedBy realtion: Relation = .equal, offset: CGFloat = 0) -> UIChainableConstraint {
+    @discardableResult public func left(with view: UIView,
+                                        anchor: AxisX,
+                                        relatedBy realtion: Relation = .equal,
+                                        priority: UILayoutPriority = .required,
+                                        offset: CGFloat = 0) -> UIChainableConstraint {
         let computedAnchor = anchored(to: view, using: anchor)
         let leftAnchor = self.view.leftAnchor
+        let constraint: NSLayoutConstraint
         
         switch realtion {
         case .equal:
-            leftAnchor.constraint(equalTo: computedAnchor, constant: offset).isActive = true
+            constraint = leftAnchor.constraint(equalTo: computedAnchor, constant: offset)
         case .greaterThanOrEqual:
-            leftAnchor.constraint(greaterThanOrEqualTo: computedAnchor, constant: offset).isActive = true
+            constraint = leftAnchor.constraint(greaterThanOrEqualTo: computedAnchor, constant: offset)
         case .lessThanOrEqual:
-            leftAnchor.constraint(lessThanOrEqualTo: computedAnchor, constant: offset).isActive = true
+            constraint = leftAnchor.constraint(lessThanOrEqualTo: computedAnchor, constant: offset)
         }
+        constraint.priority = UILayoutPriority(rawValue: priority.rawValue)
+        constraint.isActive = true
+        
         return self
     }
     
-    @discardableResult public func right(with view: UIView, anchor: AxisX, relatedBy relation: Relation = .equal, offset: CGFloat = 0) -> UIChainableConstraint {
+    @discardableResult public func right(with view: UIView,
+                                         anchor: AxisX,
+                                         relatedBy relation: Relation = .equal,
+                                         priority: UILayoutPriority = .required,
+                                         offset: CGFloat = 0) -> UIChainableConstraint {
         let computedAnchor = anchored(to: view, using: anchor)
         let rightAnchor = self.view.rightAnchor
+        let constraint: NSLayoutConstraint
         
         switch relation {
         case .equal:
-            rightAnchor.constraint(equalTo: computedAnchor, constant: offset).isActive = true
+            constraint = rightAnchor.constraint(equalTo: computedAnchor, constant: offset)
         case .greaterThanOrEqual:
-            rightAnchor.constraint(greaterThanOrEqualTo: computedAnchor, constant: offset).isActive = true
+            constraint = rightAnchor.constraint(greaterThanOrEqualTo: computedAnchor, constant: offset)
         case .lessThanOrEqual:
-            rightAnchor.constraint(lessThanOrEqualTo: computedAnchor, constant: offset).isActive = true
+            constraint = rightAnchor.constraint(lessThanOrEqualTo: computedAnchor, constant: offset)
         }
+        constraint.priority = UILayoutPriority(priority.rawValue)
+        constraint.isActive = true
+        
         return self
     }
    
-    @discardableResult public func constrain(using attribute: Attribute, to viewAttribute: Attribute, of relatedView: UIView, relatedBy: Relation = .equal, offset: CGFloat = 0, multiplier: CGFloat = 1) -> UIChainableConstraint {
+    @discardableResult public func constrain(using attribute: Attribute, to viewAttribute: Attribute, of relatedView: UIView, relatedBy relation: Relation = .equal, offset: CGFloat = 0, multiplier: CGFloat = 1) -> UIChainableConstraint {
         
-        if let sup = view.superview {
-            let constraint = NSLayoutConstraint(item: view, attribute: attribute.convert(), relatedBy: relatedBy.convert(), toItem: relatedView, attribute: viewAttribute.convert(), multiplier: multiplier, constant: offset)
-            sup.addConstraint(constraint)
+        if let superview = view.superview {
+            let constraint = NSLayoutConstraint(item: view,
+                                                attribute: attribute.convert(),
+                                                relatedBy: relation.convert(),
+                                                toItem: relatedView,
+                                                attribute: viewAttribute.convert(),
+                                                multiplier: multiplier,
+                                                constant: offset)
+            superview.addConstraint(constraint)
         }
         return self
     }
@@ -153,7 +191,22 @@ public class UIChainableConstraint {
         return self
     }
     
-    @discardableResult func set(value: CGFloat, to attribute: Attribute) -> UIChainableConstraint {
+    @discardableResult public func set(width value: CGFloat) -> UIChainableConstraint {
+        set(value: value, to: .width)
+        return self
+    }
+    
+    @discardableResult public func set(height value: CGFloat) -> UIChainableConstraint {
+        set(value: value, to: .height)
+        return self
+    }
+    
+    @discardableResult public func set(aspect value: CGFloat) -> UIChainableConstraint {
+        set(value: value, to: .aspect)
+        return self
+    }
+    
+    @discardableResult public func set(value: CGFloat, to attribute: Attribute) -> UIChainableConstraint {
         guard let superview = view.superview else { return self }
         
         let constraint = attribute != .aspect ?
