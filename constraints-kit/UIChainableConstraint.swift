@@ -10,30 +10,6 @@ import UIKit
 
 public class UIChainableConstraint {
     
-    // MARK: - Enums
-    
-    public enum Attribute {
-        case top, bottom, left, right, aspect, width, height, centerX, centerY, lastBaseline, firstBaseline
-    }
-    
-    public enum AxisX {
-        case left, right
-    }
-    
-    public enum AxisY {
-        case top, bottom
-    }
-    
-    public enum Axis {
-        case horizontal, vertical
-    }
-    
-    public enum Relation: Int {
-        case lessThanOrEqual = -1
-        case equal = 0
-        case greaterThanOrEqual = 1
-    }
-    
     // MARK: - Properties
     
     internal var view: UIView
@@ -72,8 +48,7 @@ public class UIChainableConstraint {
         case .lessThanOrEqual:
             constraint = topAnchor.constraint(lessThanOrEqualTo: computedAnchor, constant: offset)
         }
-        constraint.priority = UILayoutPriority(rawValue: priority.rawValue)
-        constraint.isActive = true
+        constraint.set(priority: priority, isActive: true)
         
         return self
     }
@@ -95,8 +70,7 @@ public class UIChainableConstraint {
         case .greaterThanOrEqual:
             constraint = bottomAnchor.constraint(greaterThanOrEqualTo: computedAnchor, constant: offset)
         }
-        constraint.priority = UILayoutPriority(rawValue: priority.rawValue)
-        constraint.isActive = true
+        constraint.set(priority: priority, isActive: true)
         
         return self
     }
@@ -118,8 +92,7 @@ public class UIChainableConstraint {
         case .lessThanOrEqual:
             constraint = leftAnchor.constraint(lessThanOrEqualTo: computedAnchor, constant: offset)
         }
-        constraint.priority = UILayoutPriority(rawValue: priority.rawValue)
-        constraint.isActive = true
+        constraint.set(priority: priority, isActive: true)
         
         return self
     }
@@ -141,12 +114,104 @@ public class UIChainableConstraint {
         case .lessThanOrEqual:
             constraint = rightAnchor.constraint(lessThanOrEqualTo: computedAnchor, constant: offset)
         }
-        constraint.priority = UILayoutPriority(priority.rawValue)
-        constraint.isActive = true
+        constraint.set(priority: priority, isActive: true)
         
         return self
     }
-   
+    
+    @discardableResult public func leftToSystemSpacing(with view: UIView,
+                                                        anchor: AxisX,
+                                                        relatedBy relation: Relation = .equal,
+                                                        priority: UILayoutPriority = .required,
+                                                        multiplier: CGFloat = 1.0) -> UIChainableConstraint {
+        // We can be sure that this force-casting will succed sunce NSLayoutYAxisAnchor is a subclass of NSLayoutAnchor class
+        let computedAnchor = anchored(to: view, using: anchor) as! NSLayoutXAxisAnchor
+        let leftAnchor = self.view.leftAnchor
+        let constraint: NSLayoutConstraint
+        
+        switch relation {
+        case .equal:
+            constraint = leftAnchor.constraint(equalToSystemSpacingAfter: computedAnchor, multiplier: multiplier)
+        case .greaterThanOrEqual:
+            constraint = leftAnchor.constraint(greaterThanOrEqualToSystemSpacingAfter: computedAnchor, multiplier: multiplier)
+        case .lessThanOrEqual:
+            constraint = leftAnchor.constraint(lessThanOrEqualToSystemSpacingAfter: computedAnchor, multiplier: multiplier)
+        }
+        constraint.set(priority: priority, isActive: true)
+        
+        return self
+    }
+    
+    @discardableResult public func bottomToSystemSpacing(with view: UIView,
+                                          anchor: AxisY,
+                                          relatedBy relation: Relation = .equal,
+                                          priority: UILayoutPriority = .required,
+                                          multiplier: CGFloat = 1.0) -> UIChainableConstraint {
+        // We can be sure that this force-casting will succed sunce NSLayoutYAxisAnchor is a subclass of NSLayoutAnchor class
+        let computedAnchor = anchored(to: view, using: anchor) as! NSLayoutYAxisAnchor
+        let bottomAnchor = self.view.bottomAnchor
+        let constraint: NSLayoutConstraint
+        
+        switch relation {
+        case .equal:
+            constraint = bottomAnchor.constraint(equalToSystemSpacingBelow: computedAnchor, multiplier: multiplier)
+        case .lessThanOrEqual:
+            constraint = bottomAnchor.constraint(lessThanOrEqualToSystemSpacingBelow: computedAnchor, multiplier: multiplier)
+        case .greaterThanOrEqual:
+            constraint = bottomAnchor.constraint(greaterThanOrEqualToSystemSpacingBelow: computedAnchor, multiplier: multiplier)
+        }
+        constraint.set(priority: priority, isActive: true)
+        
+        return self
+    }
+    
+    @discardableResult public func topToSystemSpacing(with view: UIView,
+                                                         anchor: AxisY,
+                                                         relatedBy relation: Relation = .equal,
+                                                         priority: UILayoutPriority = .required,
+                                                         multiplier: CGFloat = 1.0) -> UIChainableConstraint {
+        // We can be sure that this force-casting will succed sunce NSLayoutYAxisAnchor is a subclass of NSLayoutAnchor class
+        let computedAnchor = anchored(to: view, using: anchor) as! NSLayoutYAxisAnchor
+        let topAnchor = self.view.topAnchor
+        let constraint: NSLayoutConstraint
+        
+        switch relation {
+        case .equal:
+            constraint = topAnchor.constraint(equalToSystemSpacingBelow: computedAnchor, multiplier: multiplier)
+        case .lessThanOrEqual:
+            constraint = topAnchor.constraint(lessThanOrEqualToSystemSpacingBelow: computedAnchor, multiplier: multiplier)
+        case .greaterThanOrEqual:
+            constraint = topAnchor.constraint(greaterThanOrEqualToSystemSpacingBelow: computedAnchor, multiplier: multiplier)
+        }
+        constraint.set(priority: priority, isActive: true)
+        
+        return self
+    }
+    
+    @discardableResult public func rightToSystemSpacing(with view: UIView,
+                                         anchor: AxisX,
+                                         relatedBy relation: Relation = .equal,
+                                         priority: UILayoutPriority = .required,
+                                         multiplier: CGFloat = 1.0) -> UIChainableConstraint {
+        // We can be sure that this force-casting will succed sunce NSLayoutYAxisAnchor is a subclass of NSLayoutAnchor class
+        let computedAnchor = anchored(to: view, using: anchor) as! NSLayoutXAxisAnchor
+        let rightAnchor = self.view.rightAnchor
+        let constraint: NSLayoutConstraint
+        
+        switch relation {
+        case .equal:
+            constraint = rightAnchor.constraint(equalToSystemSpacingAfter: computedAnchor, multiplier: multiplier)
+        case .greaterThanOrEqual:
+            constraint = rightAnchor.constraint(greaterThanOrEqualToSystemSpacingAfter: computedAnchor, multiplier: multiplier)
+        case .lessThanOrEqual:
+            constraint = rightAnchor.constraint(lessThanOrEqualToSystemSpacingAfter: computedAnchor, multiplier: multiplier)
+        }
+        constraint.set(priority: priority, isActive: true)
+        
+        return self
+    }
+
+    
     @discardableResult public func constrain(using attribute: Attribute, to viewAttribute: Attribute, of relatedView: UIView, relatedBy relation: Relation = .equal, offset: CGFloat = 0, multiplier: CGFloat = 1) -> UIChainableConstraint {
         
         if let superview = view.superview {
@@ -175,14 +240,24 @@ public class UIChainableConstraint {
         return self
     }
     
-    @discardableResult public func center(in view: UIView, axis: Axis, multiplier: CGFloat = 1) -> UIChainableConstraint {
+    @discardableResult public func center(in view: UIView, axis: Axis,  multiplier: CGFloat = 1) -> UIChainableConstraint {
         let anchor = axis.convert()
         constrain(using: anchor, to: anchor, of: view, offset: 0, multiplier: multiplier)
         return self
     }
     
+    @discardableResult public func width(of view: UIView, offset: CGFloat = 0.0) -> UIChainableConstraint {
+        self.view.widthAnchor.constraint(equalTo: view.widthAnchor, constant: offset).isActive = true
+        return self
+    }
+    
     @discardableResult public func width(of view: UIView, multiplier: CGFloat = 1) -> UIChainableConstraint {
         self.view.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: multiplier).isActive = true
+        return self
+    }
+    
+    @discardableResult public func height(of view: UIView, offset: CGFloat = 0.0) -> UIChainableConstraint {
+        self.view.heightAnchor.constraint(equalTo: view.heightAnchor, constant: offset).isActive = true
         return self
     }
     
@@ -216,8 +291,9 @@ public class UIChainableConstraint {
         
         return self
     }
-    
-    // MARK: - Private methods
+}
+
+private extension UIChainableConstraint {
     
     private func anchored(to view: UIView, using anchor: AxisY) -> NSLayoutAnchor<NSLayoutYAxisAnchor> {
         guard #available(iOS 11.0, *) else {
@@ -226,11 +302,19 @@ public class UIChainableConstraint {
         return (anchor == .bottom) ? view.safeAreaLayoutGuide.bottomAnchor : view.safeAreaLayoutGuide.topAnchor
     }
     
-    private func anchored(to view: UIView, using anchor: AxisX) -> NSLayoutAnchor<NSLayoutXAxisAnchor> {
+    private func anchored(to view: UIView, using anchor: AxisX, useEdge edge: Bool = false) -> NSLayoutAnchor<NSLayoutXAxisAnchor> {
         guard #available(iOS 11.0, *) else {
-            return (anchor == .left) ? view.layoutMarginsGuide.leftAnchor : view.layoutMarginsGuide.rightAnchor
+            if edge {
+                return (anchor == .left) ? view.layoutMarginsGuide.leadingAnchor : view.layoutMarginsGuide.trailingAnchor
+            } else {
+                return (anchor == .left) ? view.layoutMarginsGuide.leftAnchor : view.layoutMarginsGuide.rightAnchor
+            }
         }
-        return (anchor == .left) ? view.safeAreaLayoutGuide.leftAnchor : view.safeAreaLayoutGuide.rightAnchor
+        
+        if edge {
+            return (anchor == .left) ? view.safeAreaLayoutGuide.leadingAnchor : view.safeAreaLayoutGuide.trailingAnchor
+        } else {
+            return (anchor == .left) ? view.safeAreaLayoutGuide.leftAnchor : view.safeAreaLayoutGuide.rightAnchor
+        }
     }
-    
 }
