@@ -26,6 +26,8 @@
 		A9886696217606E00002B490 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = A9886695217606E00002B490 /* .gitignore */; };
 		A9886697217606E00002B490 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = A9886695217606E00002B490 /* .gitignore */; };
 		A9886698217606E00002B490 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = A9886695217606E00002B490 /* .gitignore */; };
+		A9C9197D21947A8A00141EBE /* UILayoutArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C9197C21947A8A00141EBE /* UILayoutArea.swift */; };
+		A9C9197F21947AA500141EBE /* Anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C9197E21947AA500141EBE /* Anchor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,8 @@
 		A988668D2176048D0002B490 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A9886691217604AE0002B490 /* UIView+ConstraintsKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+ConstraintsKit.swift"; sourceTree = "<group>"; };
 		A9886695217606E00002B490 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		A9C9197C21947A8A00141EBE /* UILayoutArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILayoutArea.swift; sourceTree = "<group>"; };
+		A9C9197E21947AA500141EBE /* Anchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anchor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +127,8 @@
 				A9859FE321917B2F00F56725 /* AxisY.swift */,
 				A9859FE521917B3E00F56725 /* Axis.swift */,
 				A9859FE721917B6A00F56725 /* Relation.swift */,
+				A9C9197C21947A8A00141EBE /* UILayoutArea.swift */,
+				A9C9197E21947AA500141EBE /* Anchor.swift */,
 			);
 			path = "constraints-kit";
 			sourceTree = "<group>";
@@ -294,10 +300,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A91FE50021905D370036A994 /* UIView+RoundedCorners.swift in Sources */,
+				A9C9197D21947A8A00141EBE /* UILayoutArea.swift in Sources */,
 				A9859FDE219169AC00F56725 /* NSLayoutConstraint+Utils.swift in Sources */,
 				A9859FE221917B0800F56725 /* AxisX.swift in Sources */,
 				A9859FE421917B2F00F56725 /* AxisY.swift in Sources */,
 				A9859FE021917A6F00F56725 /* Attribute.swift in Sources */,
+				A9C9197F21947AA500141EBE /* Anchor.swift in Sources */,
 				A9859FE621917B3E00F56725 /* Axis.swift in Sources */,
 				A9886692217604AE0002B490 /* UIView+ConstraintsKit.swift in Sources */,
 				A9859FE821917B6A00F56725 /* Relation.swift in Sources */,
