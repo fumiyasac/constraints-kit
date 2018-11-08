@@ -66,16 +66,32 @@ class ViewController: UIViewController {
 //        uiview.constraint
 //        uiview <=> view
 
-        uiview
-            .top(with: view, anchor: .top, offset: 24)
-            .identify(with: "top <-> top")
-            .bottom(with: button, anchor: .top, offset: -24)
-            .identify(with: "bottom <-> top")
-            .right(with: view, anchor: .right, offset: -24)
-            .left(with: view, anchor: .left, offset: 24)  
+//        uiview
+//            .top(with: view, anchor: .top, offset: 24)
+//            .identify(with: "top <-> top")
+//            .bottom(with: button, anchor: .top, offset: -24)
+//            .identify(with: "bottom <-> top")
+//            .right(with: view, anchor: .right, offset: -24)
+//            .left(with: view, anchor: .left, offset: 24)
         
+//        uiview.pinInside(view: view, offset: 24)
         imageView.fit(inside: uiview, offset: 24)
+//        uiview.pinInside(view: view, using: [.leading, .trailing, .top, .bottom])
         
+//        uiview.pinToBottomHalf(of: view)
+//        uiview.pinToTopHalf(of: view, offset: 24)
+//        uiview.pinToLeftHalf(of: view, offset: 24)
+//        uiview.pinToRightHalf(of: view, offset: 24)
+        
+//        uiview.pinInsideToTopLeftCorner(of: view, offset: 24)
+//        .size(CGSize(width: 200, height: 300))
+
+//        uiview.pinOutsideToTopLeftCorner(of: button, offset: 24).size(CGSize(width: 200, height: 300))
+        
+//        uiview.pinTopToTopCenter(of: view).set(width: 200).set(aspect: 2/1)
+        
+        uiview.size(CGSize(width: 200, height: 300))
+        uiview.pinBottomToBottomCenter(of: view, offset: 24)
         
         button.round(corners: .all, radius: 10)
         
