@@ -9,7 +9,7 @@
 import Foundation
 
 public enum Attribute {
-    case top, bottom, left, right, aspect, width, height, centerX, centerY, lastBaseline, firstBaseline
+    case top, bottom, left, right, aspect, width, height, centerX, centerY, lastBaseline, firstBaseline, leading, trailing
 }
 
 internal extension Attribute {
@@ -36,6 +36,10 @@ internal extension Attribute {
             return .lastBaseline
         case .firstBaseline:
             return .firstBaseline
+        case .leading:
+            return .leading
+        case .trailing:
+            return .trailing
         default:
             return .notAnAttribute
         }
