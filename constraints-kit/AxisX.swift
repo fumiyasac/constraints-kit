@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum AxisX {
+public enum AxisX: AxisType {
     case left, right
 }
 

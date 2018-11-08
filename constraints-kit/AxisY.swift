@@ -8,6 +8,6 @@
 
 import Foundation
 
-public enum AxisY {
+public enum AxisY: AxisType {
     case top, bottom
 }

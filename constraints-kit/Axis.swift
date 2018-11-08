@@ -8,7 +8,11 @@
 
 import Foundation
 
-public enum Axis {
+public protocol AxisType {
+    // Empty protocol, used as Marker Design Pattern
+}
+
+public enum Axis: AxisType {
     case horizontal, vertical
 }
 
