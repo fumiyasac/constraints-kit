@@ -8,10 +8,27 @@
 
 import Foundation
 
-extension NSLayoutConstraint {
+public extension NSLayoutConstraint {
     
-    func set(priority: UILayoutPriority, isActive: Bool) {    
+    @discardableResult public func set(priority: UILayoutPriority, isActive: Bool) -> Self {
         self.priority = priority
         self.isActive = isActive
+        return self
     }
+    
+    @discardableResult public func set(priority: UILayoutPriority) -> Self {
+        self.priority = priority
+        return self
+    }
+    
+    @discardableResult public func activate() -> Self {
+        isActive = true
+        return self
+    }
+    
+    @discardableResult public func deactivate() -> Self {
+        isActive = false
+        return self
+    }
+    
 }
