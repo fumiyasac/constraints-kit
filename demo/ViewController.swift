@@ -90,8 +90,12 @@ class ViewController: UIViewController {
         
 //        uiview.pinTopToTopCenter(of: view).set(width: 200).set(aspect: 2/1)
         
-        uiview.size(CGSize(width: 200, height: 300))
-        uiview.pinBottomToBottomCenter(of: view, offset: 24)
+//        uiview.size(CGSize(width: 200, height: 300))
+//        uiview.pinBottomToBottomCenter(of: view, offset: 24)
+
+        uiview
+            .pin(anchors: [.left, .top], toTargetView: view, using: [.leading, .top])
+            .pin(anchors: [.bottom, .right], toTargetView: button, using: [.right, .top])
         
         button.round(corners: .all, radius: 10)
         
