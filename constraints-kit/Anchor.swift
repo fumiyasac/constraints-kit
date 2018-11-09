@@ -10,7 +10,11 @@ import UIKit
 
 public struct Anchor: OptionSet {
     
+    // MARK: Conformance to OptionSet protoocl
+    
     public let rawValue: UInt
+    
+    // MARK: - Properties
     
     public static let left = Anchor(rawValue: 1 << 0)
     public static let right = Anchor(rawValue: 1 << 1)
@@ -25,12 +29,17 @@ public struct Anchor: OptionSet {
     public static let trailing = Anchor(rawValue: 1 << 10)
     public static let leading = Anchor(rawValue: 1 << 11)
     
-    public static let allCases: [Anchor] = [.left, .right, .top, .bottom, .width, .height, .centerX, .centerY, .lastBaseline, .firstBaseline, .trailing, .leading]
+    // MARK: - Private properties
     
+    private static let allCases: [Anchor] = [.left, .right, .top, .bottom, .width, .height, .centerX, .centerY, .lastBaseline, .firstBaseline, .trailing, .leading]
+    
+    // MARK: - Initializers
     
     public init(rawValue: RawValue) {
         self.rawValue = rawValue
     }
+    
+    // MARK: - Methods
     
     func convert() -> [NSLayoutConstraint.Attribute] {
         var constraints = [NSLayoutConstraint.Attribute]()
