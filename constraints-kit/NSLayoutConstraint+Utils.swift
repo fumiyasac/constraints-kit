@@ -32,3 +32,36 @@ public extension NSLayoutConstraint {
     }
     
 }
+
+extension NSLayoutConstraint.Attribute {
+    func convert() -> Attribute {
+        switch self {
+        case .left:
+            return .left
+        case .right:
+            return .right
+        case .top:
+            return .top
+        case .bottom:
+            return .bottom
+        case .centerX:
+            return .centerX
+        case .centerY:
+            return .centerY
+        case .firstBaseline:
+            return .firstBaseline
+        case .lastBaseline:
+            return .lastBaseline
+        case .height:
+            return .height
+        case .width:
+            return .width
+        case .leading:
+            return .leading
+        case .trailing:
+            return .trailing
+        default:
+            return .notAnAttribute
+        }
+    }
+}
