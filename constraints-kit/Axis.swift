@@ -16,7 +16,7 @@ public enum Axis: AxisType {
     case horizontal, vertical
 }
 
-internal extension Axis {
+extension Axis {
     
     func convert() -> Attribute {
         switch self {
