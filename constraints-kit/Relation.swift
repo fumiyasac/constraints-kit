@@ -14,7 +14,7 @@ public enum Relation: Int {
     case greaterThanOrEqual = 1
 }
 
-internal extension Relation {
+extension Relation {
     
     func convert() -> NSLayoutConstraint.Relation {
         switch self {
