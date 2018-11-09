@@ -15,12 +15,31 @@ class ViewController: UIViewController {
     let imageView = UIImageView()
     let button = UIButton(type: UIButton.ButtonType.system)
     
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: self.view.frame, style: UITableView.Style.plain)
+        view.addSubview(tableView)
+        tableView.pinInside(view: self.view)
+        return tableView
+    }()
+    
+    private lazy var dataSource = ConstraintsKitTableViewDataSource()
+    private lazy var delegate: ConstraintsKitTableViewDelegate = {
+        let delegate = ConstraintsKitTableViewDelegate(target: dataSource, delegate: self)
+        return delegate
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         // Add all the UIView components
-
+        navigationController?.topViewController?.title = "Demos"
+        
+        tableView.dataSource = dataSource
+        tableView.delegate = delegate
+        
+        return
+            
         [uiview, button, imageView].forEach { [weak self] in self?.view.addSubview($0) }
         
         uiview.backgroundColor = .orange
@@ -110,4 +129,104 @@ class ViewController: UIViewController {
             .set(width: 100)
             .set(height: 60)
     }
+}
+
+extension ViewController: ConstraintsKitTableViewDelegateSelection {
+    
+    fileprivate func selected(viewIdentifier: ViewControllersType?, error: DataSourceError?) {
+        guard let identifier = viewIdentifier, error == nil else {
+            fatalError("Error occured while trying to launch the a UIViewController: \(error.debugDescription)")
+        }
+        
+        let viewController: UIViewController
+        let rawIdentifier = identifier.rawValue
+        
+        switch identifier {
+        case .cardsView:
+            viewController = storyboard?.instantiateViewController(withIdentifier: rawIdentifier) as! CardsViewController
+        case .collectionView:
+            viewController = storyboard?.instantiateViewController(withIdentifier: rawIdentifier) as! CollectionViewController
+        }
+
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+}
+
+
+enum ViewControllersType: String {
+    case cardsView = "CardsViewController"
+    case collectionView = "CollectionViewController"
+}
+
+fileprivate class ConstraintsKitTableViewDataSource: NSObject, UITableViewDataSource {
+    
+    private var dataSource: [String] = [
+        "Card View",
+        "UICollectionView"
+    ]
+    
+    private var descriptions: [String] = [
+        "A custom UI composed out of several UIKit components that form an interactive card view",
+        "A UICollectionView with custom UICollectionViewCell"
+    ]
+    
+    private(set) var viewControllerIdentifiers: [ViewControllersType] = [
+        .cardsView, .collectionView ]
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataSource.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return configureCell(for: indexPath.row)
+    }
+    
+    // MARK: - Private methods
+    
+    private func configureCell(for index: Int) -> UITableViewCell {
+        let dataSourceElement = dataSource[index]
+        let description = descriptions[index]
+        
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "cell")
+        cell.textLabel?.text = dataSourceElement
+        cell.detailTextLabel?.text = description
+        cell.accessoryType = .disclosureIndicator
+        
+        return cell
+    }
+}
+
+fileprivate protocol ConstraintsKitTableViewDelegateSelection: class {
+    func selected(viewIdentifier: ViewControllersType?, error: DataSourceError?)
+}
+
+fileprivate class ConstraintsKitTableViewDelegate: NSObject, UITableViewDelegate {
+    
+    // MARK: - Properties
+    
+    private weak var delegate: ConstraintsKitTableViewDelegateSelection?
+    private weak var dataSource: ConstraintsKitTableViewDataSource?
+    
+    // MARK: - Initializers
+    
+    init(target dataSource: ConstraintsKitTableViewDataSource, delegate: ConstraintsKitTableViewDelegateSelection) {
+        self.dataSource = dataSource
+        self.delegate = delegate
+    }
+    
+    // MARK: - Conformance to UITableViewDelegate protocol
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let identifier = dataSource?.viewControllerIdentifiers[indexPath.row] else {
+            delegate?.selected(viewIdentifier: nil, error: DataSourceError.dataSourceWasDeallocated)
+            return
+        }
+        delegate?.selected(viewIdentifier: identifier, error: nil)
+    }
+}
+
+fileprivate enum DataSourceError: Error {
+    case dataSourceWasDeallocated
 }
