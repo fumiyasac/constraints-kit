@@ -38,17 +38,16 @@ class ViewController: UIViewController {
         tableView.dataSource = dataSource
         tableView.delegate = delegate
         
-        return
-            
-        [uiview, button, imageView].forEach { [weak self] in self?.view.addSubview($0) }
         
-        uiview.backgroundColor = .orange
-        uiview.round(corners: .all, radius: 30)
-
-        imageView.image = #imageLiteral(resourceName: "image.jpg")
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        imageView.round(corners: .all, radius: 30)
+//        [uiview, button, imageView].forEach { [weak self] in self?.view.addSubview($0) }
+//
+//        uiview.backgroundColor = .orange
+//        uiview.round(corners: .all, radius: 30)
+//
+//        imageView.image = #imageLiteral(resourceName: "image.jpg")
+//        imageView.contentMode = .scaleAspectFill
+//        imageView.clipsToBounds = true
+//        imageView.round(corners: .all, radius: 30)
         
         
 //        uiview
@@ -94,7 +93,9 @@ class ViewController: UIViewController {
 //            .left(with: view, anchor: .left, offset: 24)
         
 //        uiview.pinInside(view: view, offset: 24)
-        imageView.fit(inside: uiview, offset: 24)
+        
+//        imageView.fit(inside: uiview, offset: 24)
+        
 //        uiview.pinInside(view: view, using: [.leading, .trailing, .top, .bottom])
         
 //        uiview.pinToBottomHalf(of: view)
@@ -112,22 +113,22 @@ class ViewController: UIViewController {
 //        uiview.size(CGSize(width: 200, height: 300))
 //        uiview.pinBottomToBottomCenter(of: view, offset: 24)
 
-        uiview
-            .pin(anchors: [.left, .top], toTargetView: view, using: [.leading, .top])
-            .pin(anchors: [.bottom, .right], toTargetView: button, using: [.right, .top])
-        
-        button.round(corners: .all, radius: 10)
-        
-        // Configure UIButton
-        button.setTitle("Open", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = UIColor(red: 0.0, green: 0.25, blue: 0.5, alpha: 1.0)
-        
-        button
-            .bottom(with: view, anchor: .bottom, offset: -24)
-            .center(in: view, axis: .horizontal)
-            .set(width: 100)
-            .set(height: 60)
+//        uiview
+//            .pin(anchors: [.left, .top], toTargetView: view, using: [.leading, .top])
+//            .pin(anchors: [.bottom, .right], toTargetView: button, using: [.right, .top])
+//        
+//        button.round(corners: .all, radius: 10)
+//        
+//        // Configure UIButton
+//        button.setTitle("Open", for: .normal)
+//        button.setTitleColor(.white, for: .normal)
+//        button.backgroundColor = UIColor(red: 0.0, green: 0.25, blue: 0.5, alpha: 1.0)
+//        
+//        button
+//            .bottom(with: view, anchor: .bottom, offset: -24)
+//            .center(in: view, axis: .horizontal)
+//            .set(width: 100)
+//            .set(height: 60)
     }
 }
 
