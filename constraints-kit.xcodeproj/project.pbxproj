@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A91FE50021905D370036A994 /* UIView+RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91FE4FF21905D370036A994 /* UIView+RoundedCorners.swift */; };
+		A9648B122195A40A007711B7 /* CardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9648B112195A40A007711B7 /* CardsViewController.swift */; };
+		A9648B142195B937007711B7 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9648B132195B937007711B7 /* CollectionViewController.swift */; };
 		A9859FDE219169AC00F56725 /* NSLayoutConstraint+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9859FDD219169AC00F56725 /* NSLayoutConstraint+Utils.swift */; };
 		A9859FE021917A6F00F56725 /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9859FDF21917A6F00F56725 /* Attribute.swift */; };
 		A9859FE221917B0800F56725 /* AxisX.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9859FE121917B0800F56725 /* AxisX.swift */; };
@@ -42,6 +44,8 @@
 
 /* Begin PBXFileReference section */
 		A91FE4FF21905D370036A994 /* UIView+RoundedCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+RoundedCorners.swift"; sourceTree = "<group>"; };
+		A9648B112195A40A007711B7 /* CardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsViewController.swift; sourceTree = "<group>"; };
+		A9648B132195B937007711B7 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		A9859FDD219169AC00F56725 /* NSLayoutConstraint+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Utils.swift"; sourceTree = "<group>"; };
 		A9859FDF21917A6F00F56725 /* Attribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attribute.swift; sourceTree = "<group>"; };
 		A9859FE121917B0800F56725 /* AxisX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AxisX.swift; sourceTree = "<group>"; };
@@ -147,6 +151,8 @@
 			children = (
 				A98866812176048C0002B490 /* AppDelegate.swift */,
 				A98866832176048C0002B490 /* ViewController.swift */,
+				A9648B112195A40A007711B7 /* CardsViewController.swift */,
+				A9648B132195B937007711B7 /* CollectionViewController.swift */,
 				A98866852176048C0002B490 /* Main.storyboard */,
 				A98866882176048D0002B490 /* Assets.xcassets */,
 				A988668A2176048D0002B490 /* LaunchScreen.storyboard */,
@@ -324,8 +330,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9648B142195B937007711B7 /* CollectionViewController.swift in Sources */,
 				A98866842176048C0002B490 /* ViewController.swift in Sources */,
 				A98866822176048C0002B490 /* AppDelegate.swift in Sources */,
+				A9648B122195A40A007711B7 /* CardsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
