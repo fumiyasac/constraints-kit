@@ -11,18 +11,3 @@ import Foundation
 public enum AxisX: AxisType {
     case left, right
 }
-
-//public enum AxisEdge {
-//    case leading, trailing
-//}
-//
-//internal extension AxisEdge {
-//    func convert() -> AxisX {
-//        switch self {
-//        case .leading:
-//            return .left
-//        case .trailing:
-//            return .right
-//        }
-//    }
-//}
