@@ -4,12 +4,14 @@
 [![Language](https://img.shields.io/badge/language-Swift-orange.svg)]()
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)]()
 
-**Last Update: 05/November/2018.**
+**Last Update: 08/November/2018.**
 
 ![](logo-constraints_kit.png)
 
 # ✍️ About 
-🏗 Declarative & Chainable `Auto Layout` constraints made super easy. You don't even need to remember any new types to work with - the only thing that you need to do is to call `constraint` property for any of your `UIView` related classes. Then choose one or several chainable methods in order to describe `Auto Layout` constraints programmtically.
+🏗 Declarative, Chainable & Lightweight Auto Layout constraints framework for iOS. The framework offeres a rich set of methods for defining `Auto Layout` constraints (see `Contents`). Choose one or several chainable methods in order to describe `Auto Layout` constraints programmtically.
+
+# 📝 Contents 
 
 # 🏗 Installation
 
