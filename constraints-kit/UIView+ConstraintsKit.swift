@@ -11,16 +11,10 @@ import UIKit
 public extension UIView {
     
     // MARK: Methods
-    
-    @discardableResult public func identify(with name: String) -> UIView {
-        if let lastConstaint = superview?.constraints.last {
-            lastConstaint.identifier = name
-        }
-        return self
-    }
-    
+  
     // MARK: - Constraining
     
+    /// Constrains `self` using the specified `Attribute` to the specified `Attribute` with respect to the related `UIView`. You may set `Relation` (which is by default `.equal`), `offset` (default is `0.0`) and `multiplier` (default is `1.0`)
     @discardableResult public func constrain(using attribute: Attribute, to viewAttribute: Attribute, of relatedView: UIView, relatedBy relation: Relation = .equal, offset: CGFloat = 0, multiplier: CGFloat = 1) -> UIView {
         enableAutoLayout()
         
@@ -37,6 +31,7 @@ public extension UIView {
         return self
     }
     
+    /// Places `self` inside the specified `UIView` with an optional `offset` (default is `0.0`)
     public func fit(inside view: UIView, offset: CGFloat = 0) {
         constrain(using: .top, to: .top, of: view, offset: offset, multiplier: 1)
             .constrain(using: .bottom, to: .bottom, of: view, offset: -offset, multiplier: 1)
@@ -44,6 +39,7 @@ public extension UIView {
             .constrain(using: .right, to: .right, of: view, offset: -offset, multiplier: 1)
     }
     
+    /// Centers `self` inside the specified `UIView`
     @discardableResult public func center(in view: UIView) -> UIView {
         enableAutoLayout()
         
@@ -53,7 +49,8 @@ public extension UIView {
         return self
     }
     
-    @discardableResult public func center(in view: UIView, axis: Axis,  multiplier: CGFloat = 1) -> UIView {
+    /// Centers `self` inside the specified `UIView` using a concrete `Axis` case, with an optional `multiplier` (default is `1.0`)
+    @discardableResult public func center(in view: UIView, axis: Axis,  multiplier: CGFloat = 1.0) -> UIView {
         enableAutoLayout()
         
         let anchor = axis.convert()
@@ -61,28 +58,30 @@ public extension UIView {
         return self
     }
     
+    /// Applies width equalization between `self` and the specified `UIView`. You may change the `Relation` (default is `equal`), `UILayoutPriority` (default is `required`), `multiplier` (default is `1.0`) and `constant` (default is `0.0`)
     @discardableResult public func width(to view: UIView,
                                          relatedBy relatioin: Relation = .equal,
                                          priority: UILayoutPriority = .required,
                                          multiplier: CGFloat = 1.0,
                                          constant: CGFloat = 0.0) -> UIView {
         enableAutoLayout()
-        
+            
         let constraint: NSLayoutConstraint
         
         switch relatioin {
         case .equal:
-            constraint = self.widthAnchor.constraint(equalTo: widthAnchor, multiplier: multiplier, constant: constant)
+            constraint = self.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: multiplier, constant: constant)
         case .lessThanOrEqual:
-            constraint = self.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor, multiplier: multiplier, constant: constant)
+            constraint = self.widthAnchor.constraint(lessThanOrEqualTo: view.widthAnchor, multiplier: multiplier, constant: constant)
         case .greaterThanOrEqual:
-            constraint = self.widthAnchor.constraint(greaterThanOrEqualTo: widthAnchor, multiplier: multiplier, constant: constant)
+            constraint = self.widthAnchor.constraint(greaterThanOrEqualTo: view.widthAnchor, multiplier: multiplier, constant: constant)
         }
         constraint.set(priority: priority, isActive: true)
         
         return self
     }
     
+    /// Applies height equalization between `self` and the specified `UIView`. You may change the `Relation` (default is `equal`), `UILayoutPriority` (default is `required`), `multiplier` (default is `1.0`) and `constant` (default is `0.0`)
     @discardableResult public func height(to view: UIView,
                                           relatedBy relatioin: Relation = .equal,
                                           priority: UILayoutPriority = .required,
@@ -93,11 +92,11 @@ public extension UIView {
 
         switch relatioin {
         case .equal:
-            constraint = self.heightAnchor.constraint(equalTo: heightAnchor, multiplier: multiplier, constant: constant)
+            constraint = self.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: multiplier, constant: constant)
         case .lessThanOrEqual:
-            constraint = self.widthAnchor.constraint(lessThanOrEqualTo: heightAnchor, multiplier: multiplier, constant: constant)
+            constraint = self.widthAnchor.constraint(lessThanOrEqualTo: view.heightAnchor, multiplier: multiplier, constant: constant)
         case .greaterThanOrEqual:
-            constraint = self.widthAnchor.constraint(greaterThanOrEqualTo: heightAnchor, multiplier: multiplier, constant: constant)
+            constraint = self.widthAnchor.constraint(greaterThanOrEqualTo: view.heightAnchor, multiplier: multiplier, constant: constant)
         }
         constraint.set(priority: priority, isActive: true)
         
@@ -106,32 +105,38 @@ public extension UIView {
     
     // MARK: - Setting
     
+    /// Sets a new `CGSize` for `self` by applying layout constaints for `width` & `height` anchors
     @discardableResult public func set(size: CGSize) -> UIView {
         set(width: size.width)
         set(height: size.height)
         return self
     }
     
+    /// Sets a new `width` by applying layout constaint for `width` anchor
     @discardableResult public func set(width value: CGFloat) -> UIView {
         set(value: value, to: .width)
         return self
     }
     
+    /// Sets a new `height` by applying layout constraint for `height` anchor
     @discardableResult public func set(height value: CGFloat) -> UIView {
         set(value: value, to: .height)
         return self
     }
     
+    /// Sets a new `aspect ratio` by applying layout constaint for `aspect` anchor
     @discardableResult public func set(aspect value: CGFloat) -> UIView {
         set(value: value, to: .aspect)
         return self
     }
     
+    /// Sets a new `aspect ratio` by duplicating `aspect` of the specified `UIView`
     @discardableResult public func set(aspectOf view: UIView) -> UIView {
         set(aspect: view.aspect)
         return self
     }
     
+    /// Sets a new offset `value` for the `Attribute`
     @discardableResult public func set(value: CGFloat, to attribute: Attribute) -> UIView {
         guard let superview = self.superview else { return self }
         enableAutoLayout()
