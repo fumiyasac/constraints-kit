@@ -104,13 +104,13 @@ public extension UIView {
         return self
     }
     
-    @discardableResult public func size(_ size: CGSize) -> UIView {
+    // MARK: - Setting
+    
+    @discardableResult public func set(size: CGSize) -> UIView {
         set(width: size.width)
         set(height: size.height)
         return self
     }
-    
-    // MARK: - Setting
     
     @discardableResult public func set(width value: CGFloat) -> UIView {
         set(value: value, to: .width)
@@ -183,6 +183,10 @@ public extension UIView {
     
     public var height: CGFloat {
         return bounds.height
+    }
+    
+    public var size: CGSize {
+        return CGSize(width: width, height: height)
     }
     
     public var aspect: CGFloat {
@@ -519,16 +523,56 @@ public extension UIView {
                 continue
             }
         }
-        
         return self
     }
+    
+    @discardableResult public func pin(anchors: Anchor, toTargetView view: UIView, using viewAnchors: Anchor) -> UIView {
+        
+        let constraints = anchors.convert()
+        let targetConstraints = viewAnchors.convert()
+        
+        for (index, constraint) in constraints.enumerated() where index < targetConstraints.count {
+            let targetConstraint = targetConstraints[index].convert()
+            
+            switch constraint {
+            case .left:
+                left(with: view, anchor: targetConstraint.toAxisX() ?? .left)
+            case .right:
+                right(with: view, anchor: targetConstraint.toAxisX() ?? .right)
+            case .bottom:
+                bottom(with: view, anchor: targetConstraint.toAxisY() ?? .bottom)
+            case .top:
+                top(with: view, anchor: targetConstraint.toAxisY() ?? .top)
+            case .centerY:
+                center(in: view, axis: targetConstraint.toAxis() ?? .vertical)
+            case .centerX:
+                center(in: view, axis: targetConstraint.toAxis() ?? .horizontal)
+            case .firstBaseline:
+                constrain(using: .firstBaseline, to: targetConstraint, of: view)
+            case .lastBaseline:
+                constrain(using: .lastBaseline, to: targetConstraint, of: view)
+            case .trailing:
+                constrain(using: .trailing, to: targetConstraint, of: view)
+            case .leading:
+                constrain(using: .leading, to: targetConstraint, of: view)
+            case .width:
+                width(to: view)
+            case .height:
+                height(to: view)
+            default:
+                continue
+            }
+        }
+        return self
+    }
+    
 }
 
 
 // MARK: - Fill extension
 public extension UIView {
     
-    @discardableResult public func fillToBottomHalf(of view: UIView, offset: CGFloat = 0.0) -> UIView {
+    @discardableResult public func fillBottomHalf(of view: UIView, offset: CGFloat = 0.0) -> UIView {
         left(with: view, anchor: .left, offset: offset)
         right(with: view, anchor: .right, offset: -offset)
         bottom(with: view, anchor: .bottom, offset: -offset)
@@ -537,7 +581,7 @@ public extension UIView {
         return self
     }
     
-    @discardableResult public func fillToTopHalf(of view: UIView, offset: CGFloat = 0.0) -> UIView {
+    @discardableResult public func fillTopHalf(of view: UIView, offset: CGFloat = 0.0) -> UIView {
         left(with: view, anchor: .left, offset: offset)
         right(with: view, anchor: .right, offset: -offset)
         top(with: view, anchor: .top, offset: offset)
