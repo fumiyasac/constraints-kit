@@ -17,7 +17,7 @@ class CardsViewController: UIViewController {
         view.round(corners: .all, radius: 30)
         view.backgroundColor = .lightGray
         
-        view.pinInside(view: self.view, offset: 128)
+        view.pinInside(view: self.view, offset: 16)
         
         return view
     }()
@@ -55,7 +55,7 @@ class CardsViewController: UIViewController {
         
         imageView.addSubview(label)
         
-        label.pinTopToTopCenter(of: imageView, offset: 32)
+        label.pinTopToTopCenter(of: imageView, offset: 24)
         
         return label
     }()
@@ -84,9 +84,9 @@ class CardsViewController: UIViewController {
         let label = UILabel()
         label.numberOfLines = 10
         label.text = "This is a multiline label containing sample text for demonstration purposes. You may change this text as you'd like. This Card View can be animated by tapping on the `Animate` button. Have fun with constraints-kit framework."
-        label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: 19, weight: .medium)
         label.textColor = .lightGray
-        label.textAlignment = .justified
+        label.textAlignment = NSTextAlignment.justified
         
         cardView.insertSubview(label, aboveSubview: imageView)
         
