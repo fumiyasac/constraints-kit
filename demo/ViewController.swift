@@ -94,6 +94,12 @@ class ViewController: UIViewController {
         
 //        uiview.pinInside(view: view, offset: 24)
         
+//        uiview
+//            .center(in: view, axis: .vertical)
+//            .left(with: view, anchor: .left)
+//            .right(with: view, anchor: .right)
+//            .set(aspect: 3/2)
+        
 //        imageView.fit(inside: uiview, offset: 24)
         
 //        uiview.pinInside(view: view, using: [.leading, .trailing, .top, .bottom])
@@ -106,7 +112,8 @@ class ViewController: UIViewController {
 //        uiview.pinInsideToTopLeftCorner(of: view, offset: 24)
 //        .size(CGSize(width: 200, height: 300))
 
-//        uiview.pinOutsideToTopLeftCorner(of: button, offset: 24).size(CGSize(width: 200, height: 300))
+//        uiview.pin(of: button, offset: 24)
+//            .size(CGSize(width: 200, height: 300))
         
 //        uiview.pinTopToTopCenter(of: view).set(width: 200).set(aspect: 2/1)
         
@@ -116,7 +123,7 @@ class ViewController: UIViewController {
 //        uiview
 //            .pin(anchors: [.left, .top], toTargetView: view, using: [.leading, .top])
 //            .pin(anchors: [.bottom, .right], toTargetView: button, using: [.right, .top])
-//        
+//
 //        button.round(corners: .all, radius: 10)
 //        
 //        // Configure UIButton
