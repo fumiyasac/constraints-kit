@@ -202,6 +202,7 @@ public extension UIView {
 // MARK: - Anchoring
 public extension UIView {
     
+    /// Anchors top anchor to the specified `UIView` using `AxisY` anchor, `Relation` (defatul is `.equal`), NSLayoutPriority (default is `.required`) and `offset` (default is `0.0`)
     @discardableResult public func top(with view: UIView,
                                        anchor: AxisY,
                                        relatedBy relation: Relation = .equal,
@@ -225,6 +226,7 @@ public extension UIView {
         return self
     }
     
+    /// Anchors botom anchor to the specified `UIView` using `AxisY` anchor, `Relation` (defatul is `.equal`), NSLayoutPriority (default is `.required`) and `offset` (default is `0.0`)
     @discardableResult public func bottom(with view: UIView,
                                           anchor: AxisY,
                                           relatedBy relation: Relation = .equal,
@@ -248,6 +250,7 @@ public extension UIView {
         return self
     }
     
+    /// Anchors left anchor to the specified `UIView` using `AxisY` anchor, `Relation` (defatul is `.equal`), NSLayoutPriority (default is `.required`) and `offset` (default is `0.0`)
     @discardableResult public func left(with view: UIView,
                                         anchor: AxisX,
                                         relatedBy realtion: Relation = .equal,
@@ -271,6 +274,7 @@ public extension UIView {
         return self
     }
     
+    /// Anchors right anchor to the specified `UIView` using `AxisY` anchor, `Relation` (defatul is `.equal`), NSLayoutPriority (default is `.required`) and `offset` (default is `0.0`)
     @discardableResult public func right(with view: UIView,
                                          anchor: AxisX,
                                          relatedBy relation: Relation = .equal,
@@ -299,6 +303,7 @@ public extension UIView {
 // MARK: - Anchoring to System Spacing
 public extension UIView {
     
+    /// Anchors left anchor to the specified `UIView` with respect to System Spacing using `AxisY` anchor, `Relation` (defatul is `.equal`), NSLayoutPriority (default is `.required`) and `offset` (default is `0.0`)
     @discardableResult public func leftToSystemSpacing(with view: UIView,
                                                        anchor: AxisX,
                                                        relatedBy relation: Relation = .equal,
@@ -322,6 +327,7 @@ public extension UIView {
         return self
     }
     
+    /// Anchors bottom anchor to the specified `UIView` with respect to System Spacing using `AxisY` anchor, `Relation` (defatul is `.equal`), NSLayoutPriority (default is `.required`) and `offset` (default is `0.0`)
     @discardableResult public func bottomToSystemSpacing(with view: UIView,
                                                          anchor: AxisY,
                                                          relatedBy relation: Relation = .equal,
@@ -346,6 +352,7 @@ public extension UIView {
         return self
     }
     
+    /// Anchors top anchor to the specified `UIView` with respect to System Spacing using `AxisY` anchor, `Relation` (defatul is `.equal`), NSLayoutPriority (default is `.required`) and `offset` (default is `0.0`)
     @discardableResult public func topToSystemSpacing(with view: UIView,
                                                       anchor: AxisY,
                                                       relatedBy relation: Relation = .equal,
@@ -370,6 +377,7 @@ public extension UIView {
         return self
     }
     
+    /// Anchors right anchor to the specified `UIView` with respect to System Spacing using `AxisY` anchor, `Relation` (defatul is `.equal`), NSLayoutPriority (default is `.required`) and `offset` (default is `0.0`)
     @discardableResult public func rightToSystemSpacing(with view: UIView,
                                                         anchor: AxisX,
                                                         relatedBy relation: Relation = .equal,
@@ -397,6 +405,7 @@ public extension UIView {
 // MARK: - Pin extension
 public extension UIView {
     
+    /// Pins Top Left anchor to the Top Left corner of the specified `UIView` with a given `offset` (default is `0.0`)
     @discardableResult public func pinTopLeftToTopLeftCorner(cornerOf view: UIView, offset: CGFloat = 0.0) -> UIView {
         top(with: view, anchor: .top, offset: offset)
         left(with: view, anchor: .left, offset: offset)
@@ -404,6 +413,7 @@ public extension UIView {
         return self
     }
     
+    /// Pins Top Right anchor to the Top Right corner of the specified `UIView` with a given `offset` (default is `0.0`)
     @discardableResult public func pinTopRightToTopRightCorner(of view: UIView, offset: CGFloat = 0.0) -> UIView {
         top(with: view, anchor: .top, offset: offset)
         right(with: view, anchor: .right, offset: offset)
@@ -411,6 +421,7 @@ public extension UIView {
         return self
     }
     
+    /// Pins Bottom Right anchor to the Bottom Right corner of the specified `UIView` with a given `offset` (default is `0.0`)
     @discardableResult public func pinBottomRightToBottomRight(cornerOf view: UIView, offset: CGFloat = 0.0) -> UIView {
         bottom(with: view, anchor: .bottom, offset: offset)
         right(with: view, anchor: .right, offset: offset)
@@ -418,6 +429,7 @@ public extension UIView {
         return self
     }
     
+    /// Pins Bottom Left anchor to the Bottom Left corner of the specified `UIView` with a given `offset` (default is `0.0`)
     @discardableResult public func pinBottomLeftToBottomLeft(cornerOf view: UIView, offset: CGFloat = 0.0) -> UIView {
         bottom(with: view, anchor: .bottom, offset: offset)
         left(with: view, anchor: .left, offset: offset)
@@ -425,7 +437,7 @@ public extension UIView {
         return self
     }
     
-    
+    /// Pins Bottom Right anchor to the Top Left corner of the specified `UIView` with a given `offset` (default is `0.0`)
     @discardableResult public func pinBottomRightToTopLeft(of view: UIView, offset: CGFloat = 0.0) -> UIView {
         bottom(with: view, anchor: .top, offset: offset)
         right(with: view, anchor: .left, offset: offset)
@@ -433,7 +445,7 @@ public extension UIView {
         return self
     }
     
-    
+    /// Pins Bottom Left anchor to the Top Right corner of the specified `UIView` with a given `offset` (default is `0.0`)
     @discardableResult public func pinBottomLeftToTopRight(cornerOf view: UIView, offset: CGFloat = 0.0) -> UIView {
         bottom(with: view, anchor: .top, offset: offset)
         left(with: view, anchor: .right, offset: offset)
@@ -441,7 +453,7 @@ public extension UIView {
         return self
     }
     
-    
+    /// Pins Top Left anchor to the Bottom Right corner of the specified `UIView` with a given `offset` (default is `0.0`)
     @discardableResult public func pinTopLeftToBottomRight(cornerOf view: UIView, offset: CGFloat = 0.0) -> UIView {
         top(with: view, anchor: .bottom, offset: offset)
         left(with: view, anchor: .right, offset: offset)
@@ -449,6 +461,7 @@ public extension UIView {
         return self
     }
     
+    /// Pins Bottom Right anchor to the Top Left corner of the specified `UIView` with a given `offset` (default is `0.0`)
     @discardableResult public func pinBottomRightToTopLeft(cornerOf view: UIView, offset: CGFloat = 0.0) -> UIView {
         top(with: view, anchor: .bottom, offset: offset)
         right(with: view, anchor: .left, offset: offset)
@@ -456,6 +469,7 @@ public extension UIView {
         return self
     }
     
+    /// Pins Top anchor to the Top Center anchor of the specified `UIView` with a given `offset` (default is `0.0`)
     @discardableResult public func pinTopToTopCenter(of view: UIView, offset: CGFloat = 0.0) -> UIView {
         top(with: view, anchor: .top, offset: offset)
         center(in: view, axis: .horizontal)
@@ -463,6 +477,7 @@ public extension UIView {
         return self
     }
     
+    /// Pins Bottom anchor to the Bottom Center anchor of the specified `UIView` with a given `offset` (default is `0.0`)
     @discardableResult public func pinBottomToBottomCenter(of view: UIView, offset: CGFloat = 0.0) -> UIView {
         bottom(with: view, anchor: .bottom, offset: -offset)
         center(in: view, axis: .horizontal)
@@ -470,6 +485,7 @@ public extension UIView {
         return self
     }
     
+    /// Pins Left anchor to the Left Center anchor of the specified `UIView` with a given `offset` (default is `0.0`)
     @discardableResult public func pinLeftToLeftCenter(of view: UIView, offset: CGFloat = 0.0) -> UIView {
         left(with: view, anchor: .left, offset: offset)
         center(in: view, axis: .vertical)
@@ -477,6 +493,7 @@ public extension UIView {
         return self
     }
     
+    /// Pins Right anchor to the Right Center anchor of the specified `UIView` with a given `offset` (default is `0.0`)
     @discardableResult public func pinRightToRightCenter(of view: UIView, offset: CGFloat = 0.0) -> UIView {
         right(with: view, anchor: .right, offset: -offset)
         center(in: view, axis: .vertical)
@@ -484,6 +501,7 @@ public extension UIView {
         return self
     }
     
+    /// Pins `self` inside the specified `UIView` with `Relation` (default is `.equal`), UILayoutPriority (default is `.required`) and `offset` (default is `0.0`)
     @discardableResult public func pinInside(view: UIView, relatedBy relation: Relation = .equal, priority: UILayoutPriority = .required, offset: CGFloat = 0.0 ) -> UIView {
         
         left(with: view, anchor: .left, relatedBy: relation, priority: priority, offset: offset)
@@ -494,6 +512,7 @@ public extension UIView {
         return self
     }
     
+    /// Pins `self` to the specified `UIView` by using `Anchor` (which is an `OptionSet`)
     @discardableResult public func pinTo(view: UIView, using anchor: Anchor) -> UIView {
         
         let constraints = anchor.convert()
@@ -531,6 +550,7 @@ public extension UIView {
         return self
     }
     
+    /// Pins the specified `Anchors` of `self` to the `UIView` by using the related `Anchors`
     @discardableResult public func pin(anchors: Anchor, toTargetView view: UIView, using viewAnchors: Anchor) -> UIView {
         
         let constraints = anchors.convert()
@@ -577,6 +597,8 @@ public extension UIView {
 // MARK: - Fill extension
 public extension UIView {
     
+    
+    /// Fills the bottom half of the specified view by `self` with the given `offset` (default is `0.0`)
     @discardableResult public func fillBottomHalf(of view: UIView, offset: CGFloat = 0.0) -> UIView {
         left(with: view, anchor: .left, offset: offset)
         right(with: view, anchor: .right, offset: -offset)
@@ -585,7 +607,7 @@ public extension UIView {
         
         return self
     }
-    
+    /// Fills the top half of the specified view by `self` with the given `offset` (default is `0.0`)
     @discardableResult public func fillTopHalf(of view: UIView, offset: CGFloat = 0.0) -> UIView {
         left(with: view, anchor: .left, offset: offset)
         right(with: view, anchor: .right, offset: -offset)
@@ -595,6 +617,7 @@ public extension UIView {
         return self
     }
     
+    /// Fills the left half of the specified view by `self` with the given `offset` (default is `0.0`)
     @discardableResult public func fillLeftHalf(of view: UIView, offset: CGFloat = 0.0) -> UIView {
         left(with: view, anchor: .left, offset: offset)
         bottom(with: view, anchor: .bottom, offset: -offset)
@@ -604,6 +627,7 @@ public extension UIView {
         return self
     }
     
+    /// Fills the right half of the specified view by `self` with the given `offset` (default is `0.0`)
     @discardableResult public func fillRightHalf(cornerOf view: UIView, offset: CGFloat = 0.0) -> UIView {
         right(with: view, anchor: .right, offset: -offset)
         bottom(with: view, anchor: .bottom, offset: -offset)
