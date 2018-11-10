@@ -4,21 +4,187 @@
 [![Language](https://img.shields.io/badge/language-Swift-orange.svg)]()
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)]()
 
-**Last Update: 09/November/2018.**
+**Last Update: 10/November/2018.**
 
 ![](logo-constraints_kit.png)
 
 # ✍️ About 
 🏗 Declarative, Chainable & Lightweight Auto Layout constraints framework for iOS. The framework offeres a rich set of methods for defining `Auto Layout` constraints (see `Contents`). Choose one or several chainable methods in order to describe `Auto Layout` constraints programmtically.
 
-# 📝 Contents 
-The kit contains several groups of methods, each with specific purpose. Each group has a prefix and a description:
-
-# 🏗 Installation
-
-# ✈️ Usage
+# 💡 Movitation
+The purpose of this framework is to provide a very lightweight solution for `Auto Layout` and to make the development of programmtic `UI` much simplier, hiding the boilderplace code under the framework. Primary usage is for internal developments, however I decided that to share the framework with the comunity, since it offers some uniqueness. 
 
 # 📺 Demo
+**Section is in development**
+
+# ✈️ Usage
+The framework is pretty easy to use, however you need to know the basics of `Auto Layout` in order to avoid issues, since the framework doesn't provide debugging capabilities (will be added in later releases). 
+
+#### Import 
+After adding the framework to a project, simply add an import statemt:
+
+```swift
+import constraints_kit
+```
+
+#### Setting size 
+
+```swift
+view.set(size: CGSize(width: 300, height: 300))
+```
+
+```swift
+view.set(width: 400)
+```
+
+```swift
+view.set(height: 200)
+```
+
+```swift
+view
+    .set(width:  200)
+    .set(aspect: 2/1)
+```
+
+#### Constraining
+
+A `UIImageView` fills the parent `UIView` with offset, until the bottom anchor reaches the `top` anchor of the `UIButton`:
+
+```swift
+imageView
+    .constrain(using: .top,     to: .top,   of: view,   offset:  24)
+    .constrain(using: .right,   to: .right, of: view,   offset: -24)
+    .constrain(using: .left,    to: .left,  of: view,   offset:  24)
+    .constrain(using: .bottom,  to: .top,   of: button, offset: -24)
+```
+
+A `UIImageView` is anchored at the center of the parent view, it's stretched to the `horizontal` axis by anchoring `left` & `right` sides with the `aspect ratio` of `3 to 2`:
+
+```swift
+imageView
+    .center(in:   view, axis:   .vertical)
+    .left(with:   view, anchor: .left)
+    .right(with:  view, anchor: .right)
+    .set(aspect: 3/2)
+```
+
+#### Anchoring
+
+A custom `UIView` fills a `UICollectionViewCell` to the `top` system spacing, with custom `left` & `right` offsets and to the `top` anchor of the `UIButton`:
+
+```swift
+presenterView
+    .topToSystemSpacing(with: view,   anchor: .top)
+    .right(             with: view,   anchor: .right, offset: -16)
+    .left(              with: view,   anchor: .left,  offset:  16)
+    .bottom(            with: button, anchor: .top,   offset: -16)
+```
+
+A `UIButton` is placed at the `center` of the parent view, its `bottom` anchor is attached to the bottom of the parent view, `height` is set to `60` with `aspect ratio` of `2 to 1`:
+
+```swift
+button
+    .bottom(with: imageView, anchor:  .bottom,    offset: -34)
+    .center(in:   imageView, axis:    .horizontal)
+    .set(height: 60)
+    .set(aspect: 2/1)
+```
+
+#### Pinning 
+
+A custom `ActivityIndicator` view is anchored to the top left corner of the specidied view with some `offset` and `size` equals to `20 to 20`:
+
+```swift
+activityIndicator
+    .pinInsideToTopLeftCorner(of: view, offset: 24)
+    .size(CGSize(width: 20, height: 20))
+```
+
+Advanced case where top left anchor of a custom `ProgressView` is attached to the top leading corner of the parent view and  the bottom right anchor is attached to the top right anchor of the `LogIn` button:
+
+```swift
+progressView
+    .pin(anchors: [.left,   .top],    toTargetView: view,   using: [.leading, .top])
+    .pin(anchors: [.bottom, .right],  toTargetView: button, using: [.right,   .top])
+```
+
+### Filling
+
+A `UITableView` is placed inside the parent `UIView` and fills the top half of it (using `left`, `top`, `right` and `centerX` anchors):
+
+```swift
+tableView.fillTopHalf(of: parentView)
+```
+
+A `UICollectionView` is placed inside the parent `UIView` and fills the left half of it with the specified offset (using `left`, `top`, `bottom` and `centerY` anchors):
+
+```swift 
+collectionView.fillLeftHalf(of: splitView, offset: 16)
+```
+
+
+# 📝 Contents 
+The kit contains several groups of methods, each with a specific purpose. All the groups can be chained together, however you should keep in mind that if you have conflicting constraints or you don't provide enough information for the `Auto Layout` engine, you will see no effect or some unexpected results. It's assumed that you already know the basics of `Auto Layout`.
+
+#### Common 
+
+- `constrain` - constrains `self` using the specified `Attribute` to the specified `Attribute` with respect to the related `UIView`. You may set `Relation` (which is by default `.equal`), `offset` (default is `0.0`) and `multiplier` (default is `1.0`)
+- `fit` - places `self` inside the specified `UIView` with an optional `offset` (default is `0.0`)
+- `center` - centers `self` inside the specified `UIView` using a concrete `Axis` case, with an optional `multiplier` (default is `1.0`)
+- `width` - applies width equalization between `self` and the specified `UIView`. You may change the `Relation` (default is `equal`), `UILayoutPriority` (default is `required`), `multiplier` (default is `1.0`) and `constant` (default is `0.0`)
+- `height` - applies height equalization between `self` and the specified `UIView`. You may change the `Relation` (default is `equal`), `UILayoutPriority` (default is `required`), `multiplier` (default is `1.0`) and `constant` (default is `0.0`)
+
+#### Setters
+
+- `set(size:)` - sets a new `CGSize` for `self` by applying layout constaints for `width` & `height` anchors
+- `set(width:)` - sets a new `width` by applying layout constaint for `width` anchor
+- `set(height:)` - sets a new `height` by applying layout constraint for `height` anchor
+- `set(aspect:)` - sets a new `aspect ratio` by applying layout constaint for `aspect` anchor
+- `set(aspectOf:)` - sets a new `aspect ratio` by duplicating `aspect` of the specified `UIView`
+- `set(value: to:)` - sets a new offset `value` for the `Attribute`
+
+#### Anchoring
+
+- `top` - anchors top anchor to the specified `UIView` using `AxisY` anchor, `Relation` (defatul is `.equal`), NSLayoutPriority (default is `.required`) and `offset` (default is `0.0`)
+- `bottom` - anchors bottom anchor to the specified `UIView` using `AxisY` anchor, `Relation` (defatul is `.equal`), NSLayoutPriority (default is `.required`) and `offset` (default is `0.0`)
+- `left` - anchors left anchor to the specified `UIView` using `AxisY` anchor, `Relation` (defatul is `.equal`), NSLayoutPriority (default is `.required`) and `offset` (default is `0.0`) 
+- `right` - anchors right anchor to the specified `UIView` using `AxisY` anchor, `Relation` (defatul is `.equal`), NSLayoutPriority (default is `.required`) and `offset` (default is `0.0`)
+
+#### Anchoring to System Spacing
+
+- `rightToSystemSpacing` - anchors right anchor to the specified `UIView` with respect to System Spacing using `AxisY` anchor, `Relation` (defatul is `.equal`), NSLayoutPriority (default is `.required`) and `offset` (default is `0.0`)
+- `leftToSystemSpacing` - anchors left anchor to the specified `UIView` with respect to System Spacing using `AxisY` anchor, `Relation` (defatul is `.equal`), NSLayoutPriority (default is `.required`) and `offset` (default is `0.0`)
+- `topToSystemSpacing` - anchors top anchor to the specified `UIView` with respect to System Spacing using `AxisY` anchor, `Relation` (defatul is `.equal`), NSLayoutPriority (default is `.required`) and `offset` (default is `0.0`)
+- `bottomToSystemSpacing` - anchors bottom anchor to the specified `UIView` with respect to System Spacing using `AxisY` anchor, `Relation` (defatul is `.equal`), NSLayoutPriority (default is `.required`) and `offset` (default is `0.0`)
+
+#### Pinning
+
+- `pinTopLeftToTopLeftCorner` - pins Top Left anchor to the Top Left corner of the specified `UIView` with a given `offset` (default is `0.0`)
+- `pinTopRightToTopRightCorner` - pins Top Right anchor to the Top Right corner of the specified `UIView` with a given `offset` (default is `0.0`)
+- `pinBottomRightToBottomRight` - pins Bottom Right anchor to the Bottom Right corner of the specified `UIView` with a given `offset` (default is `0.0`)
+- `pinBottomLeftToBottomLeft` - pins Bottom Left anchor to the Bottom Left corner of the specified `UIView` with a given `offset` (default is `0.0`)
+- `pinBottomRightToTopLeft` - pins Bottom Right anchor to the Top Left corner of the specified `UIView` with a given `offset` (default is `0.0`)
+- `pinBottomLeftToTopRight` - pins Bottom Left anchor to the Top Right corner of the specified `UIView` with a given `offset` (default is `0.0`)
+- `pinTopLeftToBottomRight` - pins Top Left anchor to the Bottom Right corner of the specified `UIView` with a given `offset` (default is `0.0`)
+- `pinBottomRightToTopLeft` - pins Bottom Right anchor to the Top Left corner of the specified `UIView` with a given `offset` (default is `0.0`)
+- `pinTopToTopCenter` - pins Top anchor to the Top Center anchor of the specified `UIView` with a given `offset` (default is `0.0`)
+- `pinBottomToBottomCenter` - pins Bottom anchor to the Bottom Center anchor of the specified `UIView` with a given `offset` (default is `0.0`)
+- `pinLeftToLeftCenter` - pins Left anchor to the Left Center anchor of the specified `UIView` with a given `offset` (default is `0.0`)
+- `pinRightToRightCenter` - pins Right anchor to the Right Center anchor of the specified `UIView` with a given `offset` (default is `0.0`)
+- `pinInside` - pins `self` inside the specified `UIView` with `Relation` (default is `.equal`), UILayoutPriority (default is `.required`) and `offset` (default is `0.0`)
+- `pinTo` - pins `self` to the specified `UIView` by using `Anchor` (which is an `OptionSet`)
+- `pin(anchors:, toTargetView: , using:)` - pins the specified `Anchors` of `self` to the `UIView` by using the related `Anchors`
+
+#### Filling
+
+- `fillBottomHalf` - fills the bottom half of the specified view by `self` with the given `offset` (default is `0.0`)
+- `fillTopHalf` - fills the top half of the specified view by `self` with the given `offset` (default is `0.0`)
+- `fillLeftHalf` - fills the left half of the specified view by `self` with the given `offset` (default is `0.0`)
+- `fillRightHalf` - fills the right half of the specified view by `self` with the given `offset` (default is `0.0`)
+
+# 🏗 Installation
+**Section is in development**
 
 # 👨‍💻 Author 
 [Astemir Eleev](https://github.com/jVirus)
