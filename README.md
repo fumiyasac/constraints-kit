@@ -30,7 +30,7 @@ You need to write just a few lines of code:
 
 // 2. Then we assume that your views are visually fully configured. 
 
-// 3. And finally, all we need to do to specify the constraints is:
+// 3. And finally, all we need to do to specify the constraints:
 
 cardView.pinInside(view: self.view, offset: 16)
 
