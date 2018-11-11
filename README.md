@@ -4,7 +4,7 @@
 [![Language](https://img.shields.io/badge/language-Swift-orange.svg)]()
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)]()
 
-**Last Update: 10/November/2018.**
+**Last Update: 11/November/2018.**
 
 ![](logo-constraints_kit.png)
 
@@ -49,9 +49,15 @@ label
         .right(with:    imageView, anchor: .right,  offset: -16)
 ```
 
+# 🏗 Installation
+
+## CocoaPod
+
+## Manual 
+You can always manually add the framework sources into your project. In order to do that just simply copy-paste the following [files](https://github.com/jVirus/constraints-kit/tree/master/constraints-kit).
 
 # ✈️ Usage
-The framework is pretty easy to use, however you need to know the basics of `Auto Layout` in order to avoid issues, since the framework doesn't provide debugging capabilities (will be added in later releases). 
+The framework is pretty easy to use, however I do recommend to learn the basics of `Auto Layout` before installing the framework - it will help you to understand what the minimum number of constraints a `UIView` needs to have and to avoid common pitfalls.
 
 #### Import 
 After adding the framework to a project, simply add an import statemt:
@@ -216,12 +222,6 @@ The kit contains several groups of methods, each with a specific purpose. All th
 - `fillLeftHalf` - fills the left half of the specified view by `self` with the given `offset` (default is `0.0`)
 - `fillRightHalf` - fills the right half of the specified view by `self` with the given `offset` (default is `0.0`)
 
-# 🏗 Installation
-
-## CocoaPod
-
-## Manual 
-You can always manually add the framework sources into your project. In order to do that just simply copy-paste the following [files](https://github.com/jVirus/constraints-kit/tree/master/constraints-kit).
 
 # 👨‍💻 Author 
 [Astemir Eleev](https://github.com/jVirus)
