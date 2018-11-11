@@ -26,7 +26,7 @@ In order to create something like in the following screenshot:
 You need to write just a few lines of code:
 
 ```swift
-// 1. First you need to add all your views somewhere. That means your views must to have a superview. You assume that you have done that. 
+// 1. First you need to add all your views somewhere. That means your views must have a superview. Let's assume that you have done that. 
 
 // 2. Then we assume that your views are visually fully configured. 
 
