@@ -51,7 +51,12 @@ label
 
 # 🏗 Installation
 
-## CocoaPod
+## CocoaPods
+`constraints-kit` is availabe via `CocoaPods`
+
+```
+pod 'constraints-kit', '~> 1.0.0' 
+```
 
 ## Manual 
 You can always manually add the framework sources into your project. In order to do that just simply copy-paste the following [files](https://github.com/jVirus/constraints-kit/tree/master/constraints-kit).
@@ -221,7 +226,6 @@ The kit contains several groups of methods, each with a specific purpose. All th
 - `fillTopHalf` - fills the top half of the specified view by `self` with the given `offset` (default is `0.0`)
 - `fillLeftHalf` - fills the left half of the specified view by `self` with the given `offset` (default is `0.0`)
 - `fillRightHalf` - fills the right half of the specified view by `self` with the given `offset` (default is `0.0`)
-
 
 # 👨‍💻 Author 
 [Astemir Eleev](https://github.com/jVirus)
