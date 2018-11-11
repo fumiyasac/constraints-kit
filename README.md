@@ -9,13 +9,46 @@
 ![](logo-constraints_kit.png)
 
 # ✍️ About 
-🏗 Declarative, Chainable & Lightweight Auto Layout constraints framework for iOS. The framework offeres a rich set of methods for defining `Auto Layout` constraints (see `Contents`). Choose one or several chainable methods in order to describe `Auto Layout` constraints programmtically.
+🏗 Declarative, Chainable & Lightweight Auto Layout constraints framework for iOS. The framework offers a rich set of methods for defining `Auto Layout` constraints (see `Contents`) without any other external dependencies. 
 
 # 💡 Movitation
-The purpose of this framework is to provide a very lightweight solution for `Auto Layout` and to make the development of programmtic `UI` much simplier, hiding the boilderplace code under the framework. Primary usage is for internal developments, however I decided that to share the framework with the comunity, since it offers some uniqueness. 
+The purpose of this framework is to provide a very lightweight solution for `Auto Layout` and to make the development of programmatic `UI` much simpler, hiding the boilerplate code under the framework. Primary usage is for internal developments, however I decided that to share the framework with the community, since it offers some uniqueness. 
 
 # 📺 Demo
-**Section is in development**
+
+In order to create something like in the following screenshot:
+
+<img src="https://user-images.githubusercontent.com/5098753/48311283-8435f900-e5ae-11e8-9868-d0bd1bb2f16e.png" width="300">
+
+You need to write just a few lines of code:
+
+```swift
+// 1. First you need to add all your views somewhere. That means your views must to have a superview. You assume that you have done that. 
+
+// 2. Then we assume that your views are visually fully configured. 
+
+// 3. And finally, all we need to do to specify the constraints is:
+
+cardView.pinInside(view: self.view, offset: 16)
+
+imageView.pinInside(view: cardView, offset: 8)
+
+blurView.pinInside(view: cardView)
+    
+titleLabel.pinTopToTopCenter(of: imageView, offset: 24)
+    
+button
+        .bottom(with:   imageView, anchor:  .bottom,    offset: -34)
+        .center(in:     imageView, axis:    .horizontal)
+        .set(height:    60)
+        .set(aspect:    2/1)
+            
+label
+        .center(in:     imageView)
+        .left(with:     imageView, anchor: .left,   offset:  16)
+        .right(with:    imageView, anchor: .right,  offset: -16)
+```
+
 
 # ✈️ Usage
 The framework is pretty easy to use, however you need to know the basics of `Auto Layout` in order to avoid issues, since the framework doesn't provide debugging capabilities (will be added in later releases). 
@@ -93,7 +126,7 @@ button
 
 #### Pinning 
 
-A custom `ActivityIndicator` view is anchored to the top left corner of the specidied view with some `offset` and `size` equals to `20 to 20`:
+A custom `ActivityIndicator` view is anchored to the top left corner of the specified view with some `offset` and `size` equals to `20 to 20`:
 
 ```swift
 activityIndicator
@@ -184,7 +217,11 @@ The kit contains several groups of methods, each with a specific purpose. All th
 - `fillRightHalf` - fills the right half of the specified view by `self` with the given `offset` (default is `0.0`)
 
 # 🏗 Installation
-**Section is in development**
+
+## CocoaPod
+
+## Manual 
+You can always manually add the framework sources into your project. In order to do that just simply copy-paste the following [files](https://github.com/jVirus/constraints-kit/tree/master/constraints-kit).
 
 # 👨‍💻 Author 
 [Astemir Eleev](https://github.com/jVirus)
