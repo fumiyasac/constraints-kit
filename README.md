@@ -2,6 +2,8 @@
 
 [![Platform](https://img.shields.io/badge/platform-iOS-yellow.svg)]()
 [![Language](https://img.shields.io/badge/language-Swift-orange.svg)]()
+[![Documentation](https://img.shields.io/badge/docs-100%25-magenta.svg)]()
+[![Coverage](https://img.shields.io/badge/coverage-0.0%25-red.svg)]()
 [![CocoaPod](https://img.shields.io/badge/pod-1.0.0-lightblue.svg)]()
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)]()
 
