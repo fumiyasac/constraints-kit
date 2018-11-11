@@ -93,7 +93,7 @@ s.source       = { :git => "https://github.com/jVirus/constraints-kit.git", :tag
 #  Not including the public_header_files will make all headers public.
 #
 
-s.source_files = "constraints-kit//**/*.swift"
+s.source_files = "constraints-kit/**/*.swift"
 # s.exclude_files = "Classes/Exclude"
 
 # s.public_header_files = "constraints-kit/**/*.h"
