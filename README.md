@@ -7,7 +7,7 @@
 [![CocoaPod](https://img.shields.io/badge/pod-1.0.0-lightblue.svg)]()
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)]()
 
-**Last Update: 11/November/2018.**
+**Last Update: 13/November/2018.**
 
 ![](logo-constraints_kit.png)
 
@@ -15,7 +15,7 @@
 🏗 Declarative, Chainable & Lightweight Auto Layout constraints framework for iOS. The framework offers a rich set of methods for defining `Auto Layout` constraints (see `Contents`) without any other external dependencies. 
 
 # 💡 Movitation
-The purpose of this framework is to provide a very lightweight solution for `Auto Layout` and to make the development of programmatic `UI` much simpler, hiding the boilerplate code under the framework. Primary usage is for internal developments, however I decided that to share the framework with the community, since it offers some uniqueness. 
+The purpose of this framework is to provide a very lightweight solution for `Auto Layout` and to make the development of programmatic `UI` much simpler, hiding the boilerplate code under the framework. Primary usage is for internal developments, however I decided to share the framework with the community, since it offers some uniqueness and I'm going to continue work on this development. 
 
 # 📺 Demo
 
@@ -28,9 +28,9 @@ You need to write just a few lines of code:
 ```swift
 // 1. First you need to add all your views somewhere. That means your views must have a superview. Let's assume that you have done that. 
 
-// 2. Then we assume that your views are visually fully configured. 
+// 2. Then we assume that visually your views are fully configured. 
 
-// 3. And finally, all we need to do to specify the constraints:
+// 3. And finally, all we need to do is to specify the constraints:
 
 cardView.pinInside(view: self.view, offset: 16)
 
