@@ -7,9 +7,11 @@
 [![CocoaPod](https://img.shields.io/badge/pod-1.0.0-lightblue.svg)]()
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)]()
 
-**Last Update: 13/November/2018.**
+**Last Update: 19/December/2018.**
 
 ![](logo-constraints_kit.png)
+
+### If you like the project, please give it a star ⭐ It will show the creator your appreciation and help others to discover the repo.
 
 # ✍️ About 
 🏗 Declarative, Chainable & Lightweight Auto Layout constraints framework for iOS. The framework offers a rich set of methods for defining `Auto Layout` constraints (see `Contents`) without any other external dependencies. 
