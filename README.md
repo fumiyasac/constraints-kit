@@ -4,10 +4,10 @@
 [![Language](https://img.shields.io/badge/language-Swift-orange.svg)]()
 [![Documentation](https://img.shields.io/badge/docs-100%25-magenta.svg)]()
 [![Coverage](https://img.shields.io/badge/coverage-0.0%25-red.svg)]()
-[![CocoaPod](https://img.shields.io/badge/pod-1.0.0-lightblue.svg)]()
+[![CocoaPod](https://img.shields.io/badge/pod-1.1.0-lightblue.svg)]()
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)]()
 
-**Last Update: 19/December/2018.**
+**Last Update: 02/January/2019.**
 
 ![](logo-constraints_kit.png)
 
@@ -60,7 +60,7 @@ label
 `constraints-kit` is availabe via `CocoaPods`
 
 ```
-pod 'constraints-kit', '~> 1.0.0' 
+pod 'constraints-kit', '~> 1.1.0' 
 ```
 
 ## Manual 
@@ -106,6 +106,15 @@ imageView
     .constrain(using: .right,   to: .right, of: view,   offset: -24)
     .constrain(using: .left,    to: .left,  of: view,   offset:  24)
     .constrain(using: .bottom,  to: .top,   of: button, offset: -24)
+```
+
+Also you can remove the `of: view` part in cases when you want to anchor a `view` to its `superview`:
+```swift
+imageView
+    .constrain(using: .top,     to: .top, ,   offset:  24)
+    .constrain(using: .right,   to: .right,   offset: -24)
+    .constrain(using: .left,    to: .left,    offset:  24)
+    .constrain(using: .bottom,  to: .top,     offset: -24)
 ```
 
 A `UIImageView` is anchored at the center of the parent view, it's stretched to the `horizontal` axis by anchoring `left` & `right` sides with the `aspect ratio` of `3 to 2`:
