@@ -17,7 +17,11 @@ class CardsViewController: UIViewController {
         view.round(corners: .all, radius: 30)
         view.backgroundColor = .lightGray
         
-        view.pinInside(view: self.view, offset: 16)
+        do {
+            try view.pinInside(offset: 16)
+        } catch {
+            debugPrint("CardView has thrown error: ", error)
+        }
         
         return view
     }()
@@ -29,8 +33,12 @@ class CardsViewController: UIViewController {
         self.cardView.addSubview(view)
         
         view.round(corners: .all, radius: 30)
+        do {
+            try view.pinInside(view: cardView, offset: 8)
+        } catch {
+            debugPrint("ImageView has thrown error: ", error)
+        }
         
-        view.pinInside(view: cardView, offset: 8)
         return view
     }()
     
@@ -41,8 +49,12 @@ class CardsViewController: UIViewController {
         imageView.addSubview(view)
         
         view.round(corners: .all, radius: 30)
-        view.pinInside(view: cardView)
-
+        do {
+            try view.pinInside(view: cardView)
+        } catch {
+            debugPrint("BlurView has thrown error: ", error)
+        }
+        
         return view
     }()
     
@@ -54,8 +66,11 @@ class CardsViewController: UIViewController {
         label.textColor = .white
         
         imageView.addSubview(label)
-        
-        label.pinTopToTopCenter(of: imageView, offset: 24)
+        do {
+            try label.pinTopToTopCenter(of: imageView, offset: 24)
+        } catch {
+            debugPrint("TitleLabel has thrown error: ", error)
+        }
         
         return label
     }()
@@ -71,11 +86,15 @@ class CardsViewController: UIViewController {
         
         cardView.insertSubview(button, aboveSubview: imageView)
         
-        button
-            .bottom(with: imageView, anchor: .bottom, offset: -34)
-            .center(in: imageView, axis: .horizontal)
-            .set(height: 60)
-            .set(aspect: 2/1)
+        do {
+            try button
+                .bottom(with: imageView, anchor: .bottom, offset: -34)
+                .center(in: imageView, axis: .horizontal)
+                .set(height: 60)
+                .set(aspect: 2/1)
+        } catch {
+            debugPrint("Button has thrown error: ", error)
+        }
 
         return button
     }()
@@ -90,10 +109,14 @@ class CardsViewController: UIViewController {
         
         cardView.insertSubview(label, aboveSubview: imageView)
         
-        label
-            .center(in: imageView)
-            .left(with: imageView, anchor: .left, offset: 16)
-            .right(with: imageView, anchor: .right, offset: -16)
+        do {
+            try label
+                .center(in: imageView)
+                .left(with: imageView, anchor: .left, offset: 16)
+                .right(with: imageView, anchor: .right, offset: -16)
+        } catch {
+            debugPrint("Text has thrown errro: ", error)
+        }
         
         return label
     }()

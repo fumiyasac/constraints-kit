@@ -18,7 +18,8 @@ class ViewController: UIViewController {
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: self.view.frame, style: UITableView.Style.plain)
         view.addSubview(tableView)
-        tableView.pinInside(view: self.view)
+        try! tableView.pinInside()
+        
         return tableView
     }()
     
