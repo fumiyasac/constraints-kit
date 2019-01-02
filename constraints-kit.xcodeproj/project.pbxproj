@@ -16,6 +16,8 @@
 		A9859FE421917B2F00F56725 /* AxisY.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9859FE321917B2F00F56725 /* AxisY.swift */; };
 		A9859FE621917B3E00F56725 /* Axis.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9859FE521917B3E00F56725 /* Axis.swift */; };
 		A9859FE821917B6A00F56725 /* Relation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9859FE721917B6A00F56725 /* Relation.swift */; };
+		A987F85221DCA5E4006D9EFE /* ConstraintKitError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A987F85121DCA5E4006D9EFE /* ConstraintKitError.swift */; };
+		A987F85421DCA5FE006D9EFE /* SperviewObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A987F85321DCA5FE006D9EFE /* SperviewObject.swift */; };
 		A988666B2176046A0002B490 /* constraints_kit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9886661217604690002B490 /* constraints_kit.framework */; };
 		A98866702176046A0002B490 /* constraints_kitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A988666F2176046A0002B490 /* constraints_kitTests.swift */; };
 		A98866722176046A0002B490 /* constraints_kit.h in Headers */ = {isa = PBXBuildFile; fileRef = A9886664217604690002B490 /* constraints_kit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -52,6 +54,8 @@
 		A9859FE321917B2F00F56725 /* AxisY.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AxisY.swift; sourceTree = "<group>"; };
 		A9859FE521917B3E00F56725 /* Axis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Axis.swift; sourceTree = "<group>"; };
 		A9859FE721917B6A00F56725 /* Relation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Relation.swift; sourceTree = "<group>"; };
+		A987F85121DCA5E4006D9EFE /* ConstraintKitError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintKitError.swift; sourceTree = "<group>"; };
+		A987F85321DCA5FE006D9EFE /* SperviewObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SperviewObject.swift; sourceTree = "<group>"; };
 		A9886661217604690002B490 /* constraints_kit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = constraints_kit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9886664217604690002B490 /* constraints_kit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = constraints_kit.h; sourceTree = "<group>"; };
 		A9886665217604690002B490 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -133,6 +137,8 @@
 				A9859FE721917B6A00F56725 /* Relation.swift */,
 				A9C9197C21947A8A00141EBE /* UILayoutArea.swift */,
 				A9C9197E21947AA500141EBE /* Anchor.swift */,
+				A987F85121DCA5E4006D9EFE /* ConstraintKitError.swift */,
+				A987F85321DCA5FE006D9EFE /* SperviewObject.swift */,
 			);
 			path = "constraints-kit";
 			sourceTree = "<group>";
@@ -309,12 +315,14 @@
 				A9C9197D21947A8A00141EBE /* UILayoutArea.swift in Sources */,
 				A9859FDE219169AC00F56725 /* NSLayoutConstraint+Utils.swift in Sources */,
 				A9859FE221917B0800F56725 /* AxisX.swift in Sources */,
+				A987F85221DCA5E4006D9EFE /* ConstraintKitError.swift in Sources */,
 				A9859FE421917B2F00F56725 /* AxisY.swift in Sources */,
 				A9859FE021917A6F00F56725 /* Attribute.swift in Sources */,
 				A9C9197F21947AA500141EBE /* Anchor.swift in Sources */,
 				A9859FE621917B3E00F56725 /* Axis.swift in Sources */,
 				A9886692217604AE0002B490 /* UIView+ConstraintsKit.swift in Sources */,
 				A9859FE821917B6A00F56725 /* Relation.swift in Sources */,
+				A987F85421DCA5FE006D9EFE /* SperviewObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
